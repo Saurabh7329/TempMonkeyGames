@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">902154422000</string>
+    <string name="google_api_key" translatable="false">AIzaSyDKB0Ttdrw-vZFiGjToBirm41zoeUQe5f4</string>
+    <string name="google_app_id" translatable="false">1:902154422000:android:9a216fc673168ca2f2a435</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDKB0Ttdrw-vZFiGjToBirm41zoeUQe5f4</string>
+    <string name="google_storage_bucket" translatable="false">monkeygames-ae61b.appspot.com</string>
+    <string name="project_id" translatable="false">monkeygames-ae61b</string>
+</resources>
