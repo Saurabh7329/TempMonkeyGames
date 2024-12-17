@@ -54,7 +54,7 @@ class _AuthPageState extends State<AuthPage> {
 
   void loadAsset() async {
     Uint8List data =
-        (await rootBundle.load('assets/images/auth/auth_background.png'))
+        (await rootBundle.load('assets/images/auth/login_bg.png'))
             .buffer
             .asUint8List();
     setState(() => imageData = data);
@@ -98,12 +98,16 @@ class _AuthPageState extends State<AuthPage> {
                             const Expanded(child: SizedBox()),
                             const GradientText(
                               'Risk free sports betting',
-                              style: TextStyle(fontSize: 28),
-                              gradient: LinearGradient(colors: [
+                              style: TextStyle(fontSize: 28,color: AppColors.red),
+                              gradient:LinearGradient(colors: [
+                                Color.fromRGBO(189, 11, 49,1.0),
+                                Color.fromRGBO(189, 11, 49,1.0),
+                                Color.fromRGBO(189, 11, 49,1.0)
+                              ]) /*LinearGradient(colors: [
                                 Color.fromRGBO(181, 56, 244,1.0),
                                 Color.fromRGBO(139, 59, 232,1.0),
                                 Color.fromRGBO(177, 56, 243,1.0)
-                              ]),
+                              ])189, 11, 49*/,
                             ),
                             // Image.asset(
                             //   'assets/images/app_logo/freeplay_logo.png',
@@ -121,7 +125,7 @@ class _AuthPageState extends State<AuthPage> {
                               child: Text(
                                 'People all over the world are fond of sports and sport games.',
                                 style: AppTextStyle.subtitle.copyWith(
-                                  color: AppColors.purpleLightColor,
+                                  color: AppColors.red,
                                 ),
                               ),
                             ),

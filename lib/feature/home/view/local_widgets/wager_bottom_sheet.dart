@@ -63,7 +63,7 @@ class WagerBottomSheet {
                         Text(
                           team ?? '',
                           style: AppTextStyle.body.copyWith(
-                            color: AppColors.black,
+                            color: AppColors.whities,
                           ),
                         ),
                         Text(

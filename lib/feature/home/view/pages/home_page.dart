@@ -456,18 +456,18 @@ return Scaffold(
                 'assets/icons/home/betslip.svg',
                 height: 24.w,
                 width: 24.h,
-                color: AppColors.red,
+                color: AppColors.whities,
               ),
-              backgroundColor: AppColors.darkNaviBlue,
+              backgroundColor: AppColors.lightNaviBlue,
               elevation: 5,
               splashColor: AppColors.red,
-              shape: RoundedRectangleBorder(
+              /*shape: RoundedRectangleBorder(
                 side: BorderSide(
                   color: AppColors.red, // Border color
                   width: 2.0,         // Border width
                 ),
                 borderRadius: BorderRadius.circular(16),
-              ),
+              ),*/
             ),
             Positioned(
               top: -6, // Adjust position as needed to align with top corner

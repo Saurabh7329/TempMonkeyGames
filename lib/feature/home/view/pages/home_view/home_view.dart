@@ -57,7 +57,8 @@ class _HomeViewState extends State<HomeView> {
   late FocusNode _focusNode;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   var walletBalance = "";
-  final _currencyFormatter = CurrencyTextInputFormatter.currency(
+  final _currencyFormatter =
+  CurrencyTextInputFormatter.currency(
     locale: 'en',
     decimalDigits: 0,
     symbol: '',
@@ -101,7 +102,7 @@ class _HomeViewState extends State<HomeView> {
 
   String calcPayout({required double value, required double valueForHundred}) {
     final temp = ((value * valueForHundred) / 100).round();
-    return _currencyFormatter.format.format(temp);
+    return _currencyFormatter.format.format('$temp');
   }
 
   void checkAffiliateDialog() {
@@ -180,7 +181,7 @@ class _HomeViewState extends State<HomeView> {
                         child: Text(
                           'Checkout Deals',
                           style: AppTextStyle.semibold12
-                              .copyWith(color: AppColors.black),
+                              .copyWith(color: AppColors.whities),
                         ),
                       ),
                     ),
@@ -201,7 +202,7 @@ class _HomeViewState extends State<HomeView> {
                         child: Text(
                           'Continue Playing',
                           style: AppTextStyle.semibold12
-                              .copyWith(color: AppColors.black),
+                              .copyWith(color: AppColors.whities),
                         ),
                       ),
                     ),
@@ -486,7 +487,7 @@ class _HomeViewState extends State<HomeView> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     IconButton(
-                      icon: Icon(Icons.close),
+                      icon: Icon(Icons.close,color: AppColors.whities,),
                       onPressed: () {
                         _panelController.close();
                       },
@@ -499,7 +500,7 @@ class _HomeViewState extends State<HomeView> {
                     Text(
                       team ?? '',
                       style: AppTextStyle.body.copyWith(
-                        color: AppColors.black,
+                        color: AppColors.whities,
                       ),
                     ),
                     Text(
@@ -554,7 +555,7 @@ class _HomeViewState extends State<HomeView> {
                                 child: Text(
                                   'Wager',
                                   style: AppTextStyle.body.copyWith(
-                                    color: AppColors.black,
+                                    color: AppColors.whities,
                                   ),
                                 ),
                               ),
@@ -590,8 +591,8 @@ class _HomeViewState extends State<HomeView> {
                         ColumnSpacer(8.w),
                         Row(
                           children: [
-                            Expanded(
-                              child: Container(
+                            /*Expanded(
+                              child:*/ Container(
                                 padding: EdgeInsets.only(
                                   top: 8.h,
                                   bottom: 10.h,
@@ -602,7 +603,7 @@ class _HomeViewState extends State<HomeView> {
                                   borderRadius: BorderRadius.circular(40),
                                   color: AppColors.lightNaviBlue,
                                 ),
-                                child: BalanceTextWidget(prefix: " ", amount: " ${_currencyFormatter.format}"),
+                                child: BalanceTextWidget(prefix: " ", amount: " ${_currencyFormatter.format.format(state.amount)}"),
                                 /*Text(
                                   'C ${_currencyFormatter.format(state.amount)}',
                                   style: AppTextStyle.veryBold14.copyWith(
@@ -610,10 +611,10 @@ class _HomeViewState extends State<HomeView> {
                                   ),
                                 ),*/
                               ),
-                            ),
+
                             RowSpacer(2.w),
-                            Expanded(
-                              child: Container(
+                           /* Expanded(
+                              child:*/ Container(
                                 padding: EdgeInsets.only(
                                   top: 8.h,
                                   bottom: 10.h,
@@ -641,7 +642,7 @@ class _HomeViewState extends State<HomeView> {
                                 //   ),
                                 // ),
                               ),
-                            ),
+                         //   ),
                           ],
                         ),
                         ColumnSpacer(8.w),
@@ -656,6 +657,7 @@ class _HomeViewState extends State<HomeView> {
                           },
                           isDisabled: state.amount == '',
                         ),
+
                       ],
                     ),
                   ),

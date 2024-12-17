@@ -98,7 +98,7 @@ class _ContestsPageState extends State<ContestsPage> {
                 child: Text('Switch to Real Money mode take advantage of this offer.',
                   textAlign: TextAlign.center,
                   style: AppTextStyle.bodyS.copyWith(
-                    color: AppColors.black,
+                    color: AppColors.whities,
                     decoration: TextDecoration.underline,
                   )),
               ),

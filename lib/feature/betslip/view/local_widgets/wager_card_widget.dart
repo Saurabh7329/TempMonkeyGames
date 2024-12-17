@@ -69,6 +69,7 @@ class WagerCardWidget extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
+                          height: 150,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(8),
@@ -95,12 +96,15 @@ class WagerCardWidget extends StatelessWidget {
                                 ),
                               ),
                               ColumnSpacer(12.w),
-                              Text(
+                        Padding(
+                            padding: EdgeInsets.only(left: 5),
+                          child: Flexible(
+                            child:Text(
                                 home,
                                 style: AppTextStyle.semibold12.copyWith(
                                   color: AppColors.whiteColor,
                                 ),
-                              ),
+                              ))),
                             ],
                           ),
                         ),
@@ -108,6 +112,7 @@ class WagerCardWidget extends StatelessWidget {
                       const RowSpacer(3),
                       Expanded(
                         child: Container(
+                          height: 150,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(8),
@@ -130,12 +135,15 @@ class WagerCardWidget extends StatelessWidget {
                                 ),
                               ),
                               ColumnSpacer(12.w),
-                              Text(
+                        Padding(
+                            padding: EdgeInsets.only(left: 5),
+                          child: Flexible(
+                            child:Text(
                                 away,
                                 style: AppTextStyle.semibold12.copyWith(
                                   color: AppColors.whiteColor,
                                 ),
-                              ),
+                              ))),
                             ],
                           ),
                         ),

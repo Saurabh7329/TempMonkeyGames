@@ -100,8 +100,10 @@ class _StraightContentState extends State<_StraightContent> {
     // Open the panel when the screen is loaded and close it after 1 second
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _panelController.open();
-      Future.delayed(const Duration(seconds: 1), () {
-        _panelController.close();
+      Future.delayed(const Duration(seconds: 2), () {
+        if(_panelController.isPanelAnimating) {
+          _panelController.close();
+        }
       });
     });
   }

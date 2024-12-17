@@ -1,8 +1,6 @@
-import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:freeplay/core/design/colors.dart';
 import 'package:freeplay/core/design/text_style/text_styles.dart';
 import 'package:freeplay/core/domain/domain.dart';
@@ -14,7 +12,6 @@ import 'package:freeplay/feature/common/spacers/row_spacer.dart';
 
 import '../../../home/view/local_widgets/balance_text_widget.dart';
 import '../../../home/view/local_widgets/team_name_initial_round_logo_widget.dart';
-
 
 class StraightWagerCardWidget extends StatelessWidget {
   const StraightWagerCardWidget({
@@ -64,6 +61,7 @@ class StraightWagerCardWidget extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
+                          height: 150,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(8),
@@ -90,12 +88,15 @@ class StraightWagerCardWidget extends StatelessWidget {
                                       ),
                                     ),
                               ColumnSpacer(12.w),
-                              Text(
-                                home,
-                                style: AppTextStyle.semibold12.copyWith(
-                                  color: AppColors.whiteColor,
+                              Padding(
+                                padding: EdgeInsets.only(left: 5),
+                                child: Flexible(
+                                  child: Text(home,
+                                      style: AppTextStyle.semibold12.copyWith(
+                                        color: AppColors.whiteColor,
+                                      )),
                                 ),
-                              ),
+                              )
                             ],
                           ),
                         ),
@@ -103,6 +104,7 @@ class StraightWagerCardWidget extends StatelessWidget {
                       const RowSpacer(3),
                       Expanded(
                         child: Container(
+                          height: 150,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(8),
@@ -115,7 +117,11 @@ class StraightWagerCardWidget extends StatelessWidget {
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               away.isNotEmpty
-                                  ? TeamNameInitialLogoWidget(name: away,height: 56.w,width: 56.w,)
+                                  ? TeamNameInitialLogoWidget(
+                                      name: away,
+                                      height: 56.w,
+                                      width: 56.w,
+                                    )
                                   : Container(
                                       height: 56.w,
                                       width: 56.w,
@@ -125,12 +131,14 @@ class StraightWagerCardWidget extends StatelessWidget {
                                       ),
                                     ),
                               ColumnSpacer(12.w),
-                              Text(
-                                away,
-                                style: AppTextStyle.semibold12.copyWith(
-                                  color: AppColors.whiteColor,
-                                ),
-                              ),
+                              Padding(
+                                  padding: EdgeInsets.only(left: 5),
+                                  child: Flexible(
+                                    child: Text(away,
+                                        style: AppTextStyle.semibold12.copyWith(
+                                          color: AppColors.whiteColor,
+                                        )),
+                                  )),
                             ],
                           ),
                         ),
@@ -170,7 +178,8 @@ class StraightWagerCardWidget extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    wager.oddsType[0].toUpperCase() + wager.oddsType.substring(1),
+                    wager.oddsType[0].toUpperCase() +
+                        wager.oddsType.substring(1),
                     style: AppTextStyle.menu.copyWith(
                       color: AppColors.greyMediumColor,
                     ),
@@ -181,7 +190,6 @@ class StraightWagerCardWidget extends StatelessWidget {
                       color: AppColors.red,
                     ),
                   ),
-
                 ],
               ),
               ColumnSpacer(8.h),
@@ -238,9 +246,10 @@ class StraightWagerCardWidget extends StatelessWidget {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 20.h),
-                                      child: BalanceTextWidget(prefix: " ", amount: "${wager.amount}"),
+                                      padding: EdgeInsets.only(left: 20.h),
+                                      child: BalanceTextWidget(
+                                          prefix: " ",
+                                          amount: "${wager.amount}"),
                                     ),
                                     /*Text(
                                       'C ${wager.amount}',
@@ -281,7 +290,8 @@ class StraightWagerCardWidget extends StatelessWidget {
                                     ),
                                   ),
                                   Expanded(
-                                    child:BalanceTextWidget(prefix: " ", amount: "${wager.amount}"),
+                                    child: BalanceTextWidget(
+                                        prefix: " ", amount: "${wager.amount}"),
                                     /*Text(
                                       'C ${wager.amount}',
                                       style: AppTextStyle.veryBold14.copyWith(
@@ -317,7 +327,9 @@ class StraightWagerCardWidget extends StatelessWidget {
                                     ),
                                   ),
                                   Expanded(
-                                    child: BalanceTextWidget(prefix: " ", amount: "${wager.toWin.round()}"),
+                                    child: BalanceTextWidget(
+                                        prefix: " ",
+                                        amount: "${wager.toWin.round()}"),
                                     /*Text(
                                       'C ${wager.toWin.round()}',
                                       // calcPayout(
@@ -424,8 +436,7 @@ Future<void> showEditor(
                             ),
                           ),
                           focusedBorder: UnderlineInputBorder(
-                            borderSide:
-                                BorderSide(color: AppColors.red),
+                            borderSide: BorderSide(color: AppColors.red),
                           ),
                         ),
                       ),

@@ -41,7 +41,7 @@ class _Info extends StatelessWidget {
           Text(
             time.formatTime(),
             style: AppTextStyle.subtitle
-                .copyWith(color: AppColors.greyMediumColor),
+                .copyWith(color: AppColors.black),
           ),
         ],
       ),

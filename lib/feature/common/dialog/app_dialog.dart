@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeplay/core/design/text_style/text_styles.dart';
-import 'package:freeplay/feature/common/buttons/app_text_button.dart';
+import 'package:freeplay/feature/common/buttons/app_text_button2.dart';
 
 import '../../../core/design/colors.dart';
 
@@ -24,24 +24,28 @@ class AppDialog extends StatelessWidget {
       child: CupertinoAlertDialog(
         title: Text(
           title,
-          style: AppTextStyle.semiBold16,
+          style: basycStyle.copyWith(
+            fontWeight: FontWeight.w600,
+            fontSize: 16.sp,
+            color: AppColors.whities
+          ),
         ),
         content: Text(
           'Are you sure?',
           style: basycStyle.copyWith(
-            color: AppColors.black,
+            color: AppColors.whities,
             fontWeight: FontWeight.w400,
             fontSize: 12.sp,
           ),
         ),
         actions: <Widget>[
-          AppTextButton(
+          AppTextButton2(
             text: 'Cancel',
             function: () {
               Navigator.pop(dialogContext);
             },
           ),
-          AppTextButton(
+          AppTextButton2(
             text: action,
             function: () {
               Navigator.pop(dialogContext);

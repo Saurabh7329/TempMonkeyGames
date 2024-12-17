@@ -8,8 +8,8 @@ class GradientTextButton extends StatelessWidget {
   final Function function;
   final String title;
   final Shader gradient = const RadialGradient(radius: 3, colors: [
-    AppColors.gardientDarkColor,
-    AppColors.gardientLightColor,
+    AppColors.red,
+    AppColors.red,
   ]).createShader(const Rect.fromLTWH(0.0, 0.0, 200.0, 70.0));
   GradientTextButton({Key? key, required this.function, required this.title})
       : super(key: key);
@@ -23,7 +23,7 @@ class GradientTextButton extends StatelessWidget {
             style: AppTextStyle.bodyS.copyWith(
                 foreground: Paint()..shader = gradient,
                 decoration: TextDecoration.underline,
-                decorationColor: AppColors.gardientLightColor)));
+                decorationColor: AppColors.red)));
   }
 }
 
@@ -41,8 +41,8 @@ class GradientSignupTextButton extends StatelessWidget {
         onPressed: () => function(),
         child: Text(title,
             style: AppTextStyle.bodyS.copyWith(
-                color: AppColors.signupRegisterColor,
+                color: AppColors.red,
                 decoration: TextDecoration.underline,
-                decorationColor: AppColors.signupRegisterColor)));
+                decorationColor: AppColors.red)));
   }
 }
