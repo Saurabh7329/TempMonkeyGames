@@ -324,10 +324,10 @@ return Scaffold(
     padding: EdgeInsets.only(bottom: 0, left: 10.w, right: 10.w),
     decoration: const BoxDecoration(
       color: AppColors.darkNaviBlue,
-      borderRadius: BorderRadius.only(
+      /*borderRadius: BorderRadius.only(
         topLeft: Radius.circular(14),
         topRight: Radius.circular(14),
-      ),
+      )*/
       boxShadow: [
         BoxShadow(
           offset: Offset(0, 6),

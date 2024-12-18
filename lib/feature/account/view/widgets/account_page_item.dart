@@ -45,7 +45,7 @@ class AccountPageItem extends StatelessWidget {
                 RichText(
                   text: TextSpan(
                     text: title,
-                    style: AppTextStyle.bold14
+                    style: AppTextStyle.veryBold14
                         .copyWith(color: AppColors.black),
                     children: subTitle != null
                         ? <TextSpan>[

@@ -21,7 +21,7 @@ class _BalanceTextWidget2State extends State<BalanceTextWidget2> {
         children: [
           widget.prefix.isNotEmpty ? Text(
             "${widget.prefix} ",  // Add your desired text here
-            style: AppTextStyle.semibold12.copyWith(color: AppColors.black),
+            style: AppTextStyle.semiBold16.copyWith(color: AppColors.black),
           )
               : Container(),
           Image.asset(
@@ -34,7 +34,7 @@ class _BalanceTextWidget2State extends State<BalanceTextWidget2> {
           ),
           Text(
             " " + widget.amount,  // Add your desired text here
-            style: AppTextStyle.semibold12.copyWith(color: AppColors.black),
+            style: AppTextStyle.semiBold16.copyWith(color: AppColors.black),
           ),
         ],
       )

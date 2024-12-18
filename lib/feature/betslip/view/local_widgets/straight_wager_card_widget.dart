@@ -195,7 +195,7 @@ class StraightWagerCardWidget extends StatelessWidget {
               ColumnSpacer(8.h),
               const Divider(
                 height: 1,
-                color: AppColors.lightNaviBlue,
+                color: AppColors.whities,
               ),
               ColumnSpacer(8.h),
               Text(
@@ -231,7 +231,7 @@ class StraightWagerCardWidget extends StatelessWidget {
                                 ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(40),
-                                  color: AppColors.lightNaviBlue,
+                                  color: AppColors.darkNaviBlue,
                                 ),
                                 child: Stack(
                                   alignment: Alignment.center,
@@ -277,7 +277,7 @@ class StraightWagerCardWidget extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
-                                color: AppColors.lightNaviBlue,
+                                color: AppColors.darkNaviBlue,
                               ),
                               child: Row(
                                 children: [
@@ -314,7 +314,7 @@ class StraightWagerCardWidget extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
-                                color: AppColors.lightNaviBlue,
+                                color: AppColors.darkNaviBlue,
                               ),
                               child: Row(
                                 children: [
@@ -373,7 +373,7 @@ class StraightWagerCardWidget extends StatelessWidget {
               child: Icon(
                 Icons.close,
                 size: 20.w,
-                color: AppColors.purpleGreyDarkColor,
+                color: AppColors.whities,
               ),
             ),
           ),

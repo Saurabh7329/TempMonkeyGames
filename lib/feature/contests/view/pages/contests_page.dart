@@ -85,24 +85,31 @@ class _ContestsPageState extends State<ContestsPage> {
             //         decoration: TextDecoration.underline,
             //       )),
             // ):Container(),
-            _isVisible ? Container(
-              height: 100.h,
-              decoration: BoxDecoration(
-                color: AppColors.lightNaviBlue,
-                borderRadius: BorderRadius.circular(8),
+            _isVisible ? GestureDetector(
+              onTap: (){
+
+
+
+              },
+              child: Container(
+                height: 100.h,
+                decoration: BoxDecoration(
+                  color: AppColors.lightNaviBlue,
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Align(
+                  alignment: Alignment.center,
+                  child:   Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: Text('Switch to Real Money mode take advantage of this offer.',
+                        textAlign: TextAlign.center,
+                        style: AppTextStyle.bodyS.copyWith(
+                          color: AppColors.whities,
+                          decoration: TextDecoration.underline,
+                        )),
+                  ),
+                ),
               ),
-              child: Align(
-              alignment: Alignment.center,
-              child:   Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Text('Switch to Real Money mode take advantage of this offer.',
-                  textAlign: TextAlign.center,
-                  style: AppTextStyle.bodyS.copyWith(
-                    color: AppColors.whities,
-                    decoration: TextDecoration.underline,
-                  )),
-              ),
-            ),
             ) :Container(),
             // Padding(
             //   padding: const EdgeInsets.symmetric(horizontal: 60, vertical: 16),

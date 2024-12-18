@@ -52,7 +52,8 @@ class _AccountBuilderState extends State<AccountBuilder> {
   Widget build(BuildContext context) {
     return GlobalMsgWrapper(BasicAppWidget(
       showBack: false,
-      hasAppBar: false,
+      hasAppBar: true,
+      title: 'My Account',
       scaffoldKey: _scaffoldKey,
       customHeight: MediaQuery.of(context).size.height * 0.95,
       content: BlocBuilder<AccountBloc, AccountState>(

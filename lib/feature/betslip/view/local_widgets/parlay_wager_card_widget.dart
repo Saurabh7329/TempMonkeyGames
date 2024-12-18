@@ -218,7 +218,7 @@ class ParlayWagerCardWidget extends StatelessWidget {
               child: Icon(
                 Icons.close,
                 size: 20.w,
-                color: AppColors.purpleGreyDarkColor,
+                color: AppColors.whities,
               ),
             ),
           ),

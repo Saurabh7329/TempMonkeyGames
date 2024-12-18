@@ -129,7 +129,10 @@ class _StraightContentState extends State<_StraightContent> {
       builder: (context, state) {
         final betslib = state.straightBetslips[0];
         LocalStorage.setInt(BETSLIPCOUNT, betslib.wagers.length);
-        return SlidingUpPanel(
+        return GestureDetector(onTap: (){
+          _panelController.open();
+        },
+        child: SlidingUpPanel(
           controller: _panelController,
           defaultPanelState: PanelState.CLOSED,
           isDraggable: true,
@@ -324,7 +327,7 @@ class _StraightContentState extends State<_StraightContent> {
               ),
             ),
           ),
-        );
+        ),);
       },
     );
   }

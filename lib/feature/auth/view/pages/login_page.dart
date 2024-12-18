@@ -22,15 +22,21 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BasicAppWidget(
+    return  BasicAppWidget(
       backRoute: () {
         context.router.push(const AuthPageRoute());
       },
       content: Form(
         key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
+        child:
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/auth/login_bg.png"), fit: BoxFit.cover),
+            ),
+            child:
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
@@ -39,7 +45,11 @@ class LoginPage extends StatelessWidget {
               Text(
                 'Log In',
                 textAlign: TextAlign.center,
-                style: AppTextStyle.titleL,
+                style: basycStyle.copyWith(
+                  color: AppColors.whities,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 32.sp,
+                ),
               ),
               Flexible(
                 flex: 1,
@@ -51,7 +61,7 @@ class LoginPage extends StatelessWidget {
                 'People all over the world are fond of sports and sport games.',
                 textAlign: TextAlign.center,
                 style: AppTextStyle.subtitle.copyWith(
-                  color: AppColors.purpleLightColor,
+                  color: AppColors.whities,
                 ),
               ),
               Flexible(

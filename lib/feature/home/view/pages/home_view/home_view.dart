@@ -102,7 +102,7 @@ class _HomeViewState extends State<HomeView> {
 
   String calcPayout({required double value, required double valueForHundred}) {
     final temp = ((value * valueForHundred) / 100).round();
-    return _currencyFormatter.format.format('$temp');
+    return _currencyFormatter.format.format(temp);
   }
 
   void checkAffiliateDialog() {
@@ -198,7 +198,7 @@ class _HomeViewState extends State<HomeView> {
                               borderRadius: BorderRadius.circular(
                                   10.0), // Adjust the value as needed
                             ),
-                            backgroundColor: AppColors.darkNaviBlue),
+                            backgroundColor: AppColors.lightNaviBlue),
                         child: Text(
                           'Continue Playing',
                           style: AppTextStyle.semibold12
@@ -603,7 +603,7 @@ class _HomeViewState extends State<HomeView> {
                                   borderRadius: BorderRadius.circular(40),
                                   color: AppColors.lightNaviBlue,
                                 ),
-                                child: BalanceTextWidget(prefix: " ", amount: " ${_currencyFormatter.format.format(state.amount)}"),
+                                child: BalanceTextWidget(prefix: " ", amount: " ${_currencyFormatter.format}"),
                                 /*Text(
                                   'C ${_currencyFormatter.format(state.amount)}',
                                   style: AppTextStyle.veryBold14.copyWith(
