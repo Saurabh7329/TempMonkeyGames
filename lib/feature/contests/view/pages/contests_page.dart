@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeplay/core/constants/constants.dart';
@@ -8,6 +9,9 @@ import 'package:freeplay/core/domain/contest/contest.dart';
 import 'package:freeplay/core/local_storage/local_storage_service.dart';
 import 'package:freeplay/feature/contests/view/widgets/contest_card.dart';
 import 'package:freeplay/feature/contests/view/widgets/empty_contest_card.dart';
+
+import '../../../../core/route/router.dart';
+import '../../../auth/auth.dart';
 
 class ContestsPage extends StatefulWidget {
   final Function(String) showDetails;
@@ -87,9 +91,8 @@ class _ContestsPageState extends State<ContestsPage> {
             // ):Container(),
             _isVisible ? GestureDetector(
               onTap: (){
-
-
-
+                context.router.push(AuthBuilderRoute(
+                    authStatus: Auth.register));
               },
               child: Container(
                 height: 100.h,

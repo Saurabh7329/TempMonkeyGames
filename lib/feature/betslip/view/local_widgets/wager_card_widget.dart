@@ -233,7 +233,7 @@ class WagerCardWidget extends StatelessWidget {
                                 ),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(40),
-                                  color: AppColors.lightNaviBlue,
+                                  color: AppColors.darkNaviBlue,
                                 ),
                                 child: Stack(
                                   alignment: Alignment.center,
@@ -278,7 +278,7 @@ class WagerCardWidget extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
-                                color: AppColors.lightNaviBlue,
+                                color: AppColors.darkNaviBlue,
                               ),
                               child: Row(
                                 children: [
@@ -314,7 +314,7 @@ class WagerCardWidget extends StatelessWidget {
                               ),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(40),
-                                color: AppColors.lightNaviBlue,
+                                color: AppColors.darkNaviBlue,
                               ),
                               child: Row(
                                 children: [

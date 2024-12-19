@@ -237,7 +237,7 @@ class _HomeViewState extends State<HomeView> {
                   onTap: () => FocusScope.of(context).unfocus(),
                   child: SlidingUpPanel(
                     minHeight: 0,
-                    maxHeight: _focusNode.hasFocus ? 220.h : 270.h,
+                    maxHeight: _focusNode.hasFocus ? 235.h : 285.h,
                     color: AppColors.darkNaviBlue,
                     controller: _panelController,
                     onPanelClosed: () {
@@ -591,8 +591,8 @@ class _HomeViewState extends State<HomeView> {
                         ColumnSpacer(8.w),
                         Row(
                           children: [
-                            /*Expanded(
-                              child:*/ Container(
+                            Expanded(
+                              child: Container(
                                 padding: EdgeInsets.only(
                                   top: 8.h,
                                   bottom: 10.h,
@@ -603,7 +603,7 @@ class _HomeViewState extends State<HomeView> {
                                   borderRadius: BorderRadius.circular(40),
                                   color: AppColors.lightNaviBlue,
                                 ),
-                                child: BalanceTextWidget(prefix: " ", amount: " ${_currencyFormatter.format}"),
+                                child: BalanceTextWidget(prefix: " ", amount: " ${_currencyFormatter.format(state.amount)}"),
                                 /*Text(
                                   'C ${_currencyFormatter.format(state.amount)}',
                                   style: AppTextStyle.veryBold14.copyWith(
@@ -611,10 +611,11 @@ class _HomeViewState extends State<HomeView> {
                                   ),
                                 ),*/
                               ),
+                            ),
 
                             RowSpacer(2.w),
-                           /* Expanded(
-                              child:*/ Container(
+                            Expanded(
+                              child: Container(
                                 padding: EdgeInsets.only(
                                   top: 8.h,
                                   bottom: 10.h,
@@ -642,6 +643,7 @@ class _HomeViewState extends State<HomeView> {
                                 //   ),
                                 // ),
                               ),
+                            ),
                          //   ),
                           ],
                         ),
@@ -657,7 +659,8 @@ class _HomeViewState extends State<HomeView> {
                           },
                           isDisabled: state.amount == '',
                         ),
-
+                        ColumnSpacer(8.w),
+                        SizedBox(),
                       ],
                     ),
                   ),

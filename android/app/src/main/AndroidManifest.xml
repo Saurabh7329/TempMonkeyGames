@@ -9,7 +9,7 @@
         </intent>
     </queries>
    <application
-        android:label="Risk free sports betting"
+        android:label="monkey-games"
         android:name="${applicationName}"
         android:roundIcon="@mipmap/round_app_icon"
         android:usesCleartextTraffic="true"
