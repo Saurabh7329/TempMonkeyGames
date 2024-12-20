@@ -116,7 +116,9 @@ class _ParlayContentState extends State<_ParlayContent> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _panelController.open();
       Future.delayed(const Duration(seconds: 1), () {
-        _panelController.close();
+        if(_panelController.isPanelAnimating) {
+          _panelController.close();
+        }
       });
     });
   }

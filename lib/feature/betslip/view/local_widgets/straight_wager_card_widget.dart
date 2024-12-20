@@ -37,8 +37,8 @@ class StraightWagerCardWidget extends StatelessWidget {
         Container(
           width: MediaQuery.of(context).size.width,
           margin: EdgeInsets.only(
-            top: 8.w,
-            right: 8.w,
+            top: 5,
+            right: 5,
           ),
           padding: EdgeInsets.only(
             top: 16.w,
