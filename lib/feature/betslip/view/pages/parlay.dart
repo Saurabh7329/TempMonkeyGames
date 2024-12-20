@@ -92,7 +92,7 @@ class _ParlayContent extends StatefulWidget {
 class _ParlayContentState extends State<_ParlayContent> {
   late TextEditingController _textEditingController;
   late FocusNode _focusNode;
-  final _currencyFormatter = CurrencyTextInputFormatter(
+  final _currencyFormatter = CurrencyTextInputFormatter.currency(
     locale: 'en',
     decimalDigits: 0,
     symbol: '\$',

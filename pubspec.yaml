@@ -32,7 +32,7 @@ dependencies:
   global_snack_bar: ^0.0.12
   dio_logger: ^4.0.8+8
   encrypt: ^5.0.3
-  flutter_native_splash: 2.2.10+1
+  flutter_native_splash: ^2.2.10+1
   dartz: ^0.10.1
   equatable: ^2.0.5
   package_info_plus: ^1.4.3+1
@@ -47,8 +47,8 @@ dependencies:
   url_launcher: ^6.2.6
   firebase_core: ^2.32.0
   firebase_messaging: ^14.0.3
-  flutter_local_notifications: ^17.1.2
-  device_info_plus: any
+  flutter_local_notifications: ^18.0.1
+  device_info_plus: ^11.2.0
   flutter_timezone: ^1.0.8
   popover: ^0.2.8+2
   pull_to_refresh: ^2.0.0
@@ -67,8 +67,8 @@ dev_dependencies:
   build_runner: ^2.1.11
   injectable_generator: ^1.5.4
   auto_route_generator: ^5.0.2
-  device_info_plus: ^4.1.2
-  flutter_launcher_icons: ^0.10.0
+  device_info_plus: ^11.2.0
+  flutter_launcher_icons: ^0.13.1
 
 dependency_overrides:
   package_info_plus: ^4.0.1
