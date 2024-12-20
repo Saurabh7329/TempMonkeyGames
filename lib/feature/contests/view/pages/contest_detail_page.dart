@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:freeplay/core/constants/constants.dart';
@@ -10,11 +11,14 @@ import 'package:freeplay/core/domain/leader/leader.dart';
 import 'package:freeplay/core/domain/user/user.dart';
 import 'package:freeplay/core/local_storage/local_storage_service.dart';
 import 'package:freeplay/feature/account/view/pages/account_page.dart';
+import 'package:freeplay/feature/auth/auth.dart';
 import 'package:freeplay/feature/common/buttons/app_elevated_button.dart';
 import 'package:freeplay/feature/common/buttons/app_outline_button.dart';
 import 'package:freeplay/feature/contests/view/widgets/contest_card.dart';
 import 'package:freeplay/feature/contests/view/widgets/leaderboard_widget.dart';
 import 'package:intl/intl.dart';
+
+import '../../../../core/route/router.dart';
 
 class ContestDetailPage extends StatelessWidget {
   final Function back;
@@ -96,12 +100,15 @@ class ContestDetailPage extends StatelessWidget {
                       title: 'Join This Contests',
                       function: () {
                         if (isGuest) {
+                          /*
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
                                 'Contests are not available for guests. Please become user',
                                 style: AppTextStyle.subtitle),
                             backgroundColor: AppColors.red,
-                          ));
+                          )); */
+                          context.router.push(AuthBuilderRoute(
+                              authStatus: Auth.register));
                         } else {
                           join();
                         }

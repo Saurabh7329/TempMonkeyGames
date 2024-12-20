@@ -92,7 +92,7 @@ class _ParlayContent extends StatefulWidget {
 class _ParlayContentState extends State<_ParlayContent> {
   late TextEditingController _textEditingController;
   late FocusNode _focusNode;
-  final _currencyFormatter = CurrencyTextInputFormatter.currency(
+  final _currencyFormatter = CurrencyTextInputFormatter(
     locale: 'en',
     decimalDigits: 0,
     symbol: '\$',
@@ -145,7 +145,7 @@ class _ParlayContentState extends State<_ParlayContent> {
       builder: (context, state) {
         final betslib = state.parlayBetslips[0];
         return GestureDetector(
-          onTap: () => _focusNode.unfocus(),
+          onTap: () => (_panelController.isPanelOpen) ? _panelController.close() : _panelController.open(),
           child: SlidingUpPanel(
             controller: _panelController,
             // Attach PanelController to SlidingUpPanel

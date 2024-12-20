@@ -12,6 +12,7 @@ import 'package:freeplay/feature/contests/view/widgets/empty_contest_card.dart';
 
 import '../../../../core/route/router.dart';
 import '../../../auth/auth.dart';
+import '../../../home/view/pages/home_page.dart';
 
 class ContestsPage extends StatefulWidget {
   final Function(String) showDetails;
@@ -91,8 +92,12 @@ class _ContestsPageState extends State<ContestsPage> {
             // ):Container(),
             _isVisible ? GestureDetector(
               onTap: (){
-                context.router.push(AuthBuilderRoute(
-                    authStatus: Auth.register));
+                var homePageState = context.findAncestorStateOfType<HomePageState>();
+                if (homePageState != null) {
+                  homePageState.programmaticallyClick(2);
+                } else {
+                  print('HomePageState not found');
+                }
               },
               child: Container(
                 height: 100.h,

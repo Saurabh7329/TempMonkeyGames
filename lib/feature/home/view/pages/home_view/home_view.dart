@@ -58,7 +58,7 @@ class _HomeViewState extends State<HomeView> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   var walletBalance = "";
   final _currencyFormatter =
-  CurrencyTextInputFormatter.currency(
+  CurrencyTextInputFormatter(
     locale: 'en',
     decimalDigits: 0,
     symbol: '',
@@ -102,7 +102,7 @@ class _HomeViewState extends State<HomeView> {
 
   String calcPayout({required double value, required double valueForHundred}) {
     final temp = ((value * valueForHundred) / 100).round();
-    return _currencyFormatter.format.format(temp);
+    return _currencyFormatter.format("$temp");
   }
 
   void checkAffiliateDialog() {
@@ -237,7 +237,7 @@ class _HomeViewState extends State<HomeView> {
                   onTap: () => FocusScope.of(context).unfocus(),
                   child: SlidingUpPanel(
                     minHeight: 0,
-                    maxHeight: _focusNode.hasFocus ? 235.h : 285.h,
+                    maxHeight: 285.h,//_focusNode.hasFocus ? 235.h : 285.h,
                     color: AppColors.darkNaviBlue,
                     controller: _panelController,
                     onPanelClosed: () {
