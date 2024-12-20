@@ -59,9 +59,10 @@ class StraightWagerCardWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Expanded(
-                        child: Container(
-                          height: 150,
+                      /*Expanded(
+                        child:*/ Container(
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        height: 150,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(8),
@@ -99,12 +100,13 @@ class StraightWagerCardWidget extends StatelessWidget {
                               )
                             ],
                           ),
-                        ),
+                        //),
                       ),
                       const RowSpacer(3),
-                      Expanded(
-                        child: Container(
-                          height: 150,
+                     /* Expanded(
+                        child:*/ Container(
+                        width: MediaQuery.of(context).size.width / 2.5,
+                        height: 150,
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(8),
@@ -142,7 +144,7 @@ class StraightWagerCardWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                      ),
+                   //   ),
                     ],
                   ),
                   Container(
