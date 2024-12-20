@@ -377,7 +377,7 @@ class _BetslibViewState extends State<BetslibView>
                   child: Text(
                     'Close',
                     style: AppTextStyle.semibold12
-                        .copyWith(color: AppColors.lightNaviBlue),
+                        .copyWith(color: AppColors.whiteColor),
                   ),
                 ),
               ),
