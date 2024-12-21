@@ -18,9 +18,11 @@ import 'package:freeplay/feature/contests/view/widgets/contest_card.dart';
 import 'package:freeplay/feature/contests/view/widgets/leaderboard_widget.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../core/dio/app_dio.dart';
+import '../../../../core/domain/contest/leaderboardModel.dart';
 import '../../../../core/route/router.dart';
 
-class ContestDetailPage extends StatelessWidget {
+class ContestDetailPage extends StatefulWidget {
   final Function back;
   final Function join;
   final Contest contest;
@@ -36,13 +38,55 @@ class ContestDetailPage extends StatelessWidget {
       required this.leaders,
       required this.loadMore});
 
-  String parseDate(String date) {
-    return DateFormat('dd/MM/yyyy').format(DateTime.parse(date));
-  }
+
 
   final bool isGuest =
       User.fromJson(jsonDecode(LocalStorage.getString(Freeplay_User)!)).type ==
           UserType.guest.name;
+
+  @override
+  State<ContestDetailPage> createState() => _ContestsDetailPageState();
+}
+
+class _ContestsDetailPageState extends State<ContestDetailPage> {
+
+  bool isLoading = true;
+  List<LeaderBoardModel>leaderBoard =[];
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getData();
+  }
+
+
+  void getData() async {
+    try {
+      final response = await AppDio().getRequest(
+        path: '/leaders',
+        queryParameters: {
+          'contest':'202',
+        },
+      );
+      if (response.statusCode == 200) {
+        var jsonList = response.data['data'] as List;
+        var count = jsonList.length;
+        print("objectfefef $count");
+        setState(() {
+          for (int i = 0; i < jsonList.length; i++) {
+            final obj = LeaderBoardModel.fromJson(jsonList[i]);
+            leaderBoard.add(obj);
+          }
+          setState(() {
+            isLoading = false;
+          });
+        });
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +96,7 @@ class ContestDetailPage extends StatelessWidget {
         children: [
           ContestCard(
             isFull: true,
-            contest: contest,
+            contest: widget.contest,
           ),
           Padding(
             padding: const EdgeInsets.all(16),
@@ -75,12 +119,12 @@ class ContestDetailPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: Text(
-                          '${parseDate(contest.from!)} - ${parseDate(contest.to!)}',
+                          '${parseDate(widget.contest.from!)} - ${parseDate(widget.contest.to!)}',
                           style: AppTextStyle.body
                               .copyWith(color: AppColors.black)),
                     ),
                     Expanded(
-                      child: Text(contest.prize!,
+                      child: Text(widget.contest.prize!,
                           style: AppTextStyle.body
                               .copyWith(color: AppColors.black)),
                     ),
@@ -89,17 +133,17 @@ class ContestDetailPage extends StatelessWidget {
                 SizedBox(
                   height: 10.h,
                 ),
-                if (leader != null)
+                if (widget.leader != null)
                   AppOutlineButton(
-                      title: 'Rank ${leader!.rank}',
+                      title: 'Rank ${widget.leader!.rank}',
                       function: () {},
                       borderColor: AppColors.red,
                       backgroundColor: Colors.transparent),
-                if (leader == null)
+                if (widget.leader == null)
                   AppElevatedButton(
                       title: 'Join This Contests',
                       function: () {
-                        if (isGuest) {
+                        if (widget.isGuest) {
                           /*
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             content: Text(
@@ -110,7 +154,7 @@ class ContestDetailPage extends StatelessWidget {
                           context.router.push(AuthBuilderRoute(
                               authStatus: Auth.register));
                         } else {
-                          join();
+                          widget.join();
                         }
                       }),
               ],
@@ -121,8 +165,9 @@ class ContestDetailPage extends StatelessWidget {
             thickness: 1,
           ),
           LeaderboardWidget(
-            leaders: leaders,
-            user: leader,
+            leaders: widget.leaders,
+            user: widget.leader,
+            leaderboard: leaderBoard,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -131,7 +176,7 @@ class ContestDetailPage extends StatelessWidget {
               children: [
                 AppOutlineButton(
                     title: 'Load More',
-                    function: () => loadMore(),
+                    function: () => widget.loadMore(),
                     borderColor: AppColors.red,
                     backgroundColor: Colors.transparent),
                 SizedBox(
@@ -139,13 +184,17 @@ class ContestDetailPage extends StatelessWidget {
                 ),
                 Text(
                   'Content details',
-                  style: AppTextStyle.body,
+                  style: basycStyle.copyWith(
+                    color: AppColors.black,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 14.sp,
+                  ),
                 ),
                 SizedBox(
                   height: 8.h,
                 ),
                 Text(
-                  contest.summary ?? '',
+                  widget.contest.summary ?? '',
                   style: AppTextStyle.bodyS
                       .copyWith(color: AppColors.black, height: 1.8),
                 ),
@@ -158,5 +207,20 @@ class ContestDetailPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String parseDate(String date) {
+    return DateFormat('dd/MM/yyyy').format(DateTime.parse(date));
+  }
+
+  _buildPosts(BuildContext context) {
+    return Column(children: [
+      Row(children: [
+        Text("Rank",style: AppTextStyle.bold14,),
+        Text("Player",style: AppTextStyle.bold14,),
+        Text("Score",style: AppTextStyle.bold14,)
+
+      ],)
+    ],);
   }
 }

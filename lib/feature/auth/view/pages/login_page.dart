@@ -23,6 +23,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  BasicAppWidget(
+      backgroundColor: AppColors.darkNaviBlue,
       backRoute: () {
         context.router.push(const AuthPageRoute());
       },
@@ -30,6 +31,7 @@ class LoginPage extends StatelessWidget {
         key: _formKey,
         child:
           Container(
+
             padding: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
               image: DecorationImage(

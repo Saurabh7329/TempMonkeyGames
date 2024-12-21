@@ -32,6 +32,7 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasicAppWidget(
+      backgroundColor: AppColors.darkNaviBlue,
       content: Form(
         key: _formKey,
         child: Container(

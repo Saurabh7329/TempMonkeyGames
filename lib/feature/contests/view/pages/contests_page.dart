@@ -49,6 +49,8 @@ class _ContestsPageState extends State<ContestsPage> {
       }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height * 0.9;

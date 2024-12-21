@@ -33,7 +33,7 @@ class AccountPageItem extends StatelessWidget {
           width: size.width * 0.9,
           height: 50.h,
           decoration: BoxDecoration(
-              color: AppColors.lightgrey,
+              color: Colors.transparent,
               borderRadius: BorderRadius.vertical(
                   top: isTop ? roundRadius : squareRadius,
                   bottom: isBottom ? roundRadius : squareRadius)),

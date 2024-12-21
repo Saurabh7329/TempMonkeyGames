@@ -54,7 +54,7 @@ class _AuthPageState extends State<AuthPage> {
 
   void loadAsset() async {
     Uint8List data =
-        (await rootBundle.load('assets/images/auth/login_bg.png'))
+        (await rootBundle.load('assets/images/auth/auth_bg.png'))
             .buffer
             .asUint8List();
     setState(() => imageData = data);
@@ -96,19 +96,19 @@ class _AuthPageState extends State<AuthPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Expanded(child: SizedBox()),
-                            const GradientText(
+                            /*const GradientText(
                               'Risk free sports betting',
                               style: TextStyle(fontSize: 28,color: AppColors.red),
                               gradient:LinearGradient(colors: [
                                 Color.fromRGBO(189, 11, 49,1.0),
                                 Color.fromRGBO(189, 11, 49,1.0),
                                 Color.fromRGBO(189, 11, 49,1.0)
-                              ]) /*LinearGradient(colors: [
+                              ]) *//*LinearGradient(colors: [
                                 Color.fromRGBO(181, 56, 244,1.0),
                                 Color.fromRGBO(139, 59, 232,1.0),
                                 Color.fromRGBO(177, 56, 243,1.0)
-                              ])189, 11, 49*/,
-                            ),
+                              ])189, 11, 49*//*,
+                            ),*/
                             // Image.asset(
                             //   'assets/images/app_logo/freeplay_logo.png',
                             //   height: 23.h,
@@ -120,7 +120,7 @@ class _AuthPageState extends State<AuthPage> {
                               'Welcome to  5 Monkey Games',
                               style: AppTextStyle.titleL,
                             ),*/
-                            Padding(
+                            /*Padding(
                               padding: const EdgeInsets.fromLTRB(0, 16, 0, 40),
                               child: Text(
                                 'People all over the world are fond of sports and sport games.',
@@ -128,7 +128,7 @@ class _AuthPageState extends State<AuthPage> {
                                   color: AppColors.red,
                                 ),
                               ),
-                            ),
+                            ),*/
                             SizedBox(
                               height: 50.h,
                             ),
