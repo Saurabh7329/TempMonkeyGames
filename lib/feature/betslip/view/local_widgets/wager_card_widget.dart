@@ -30,8 +30,8 @@ class WagerCardWidget extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.only(
-        top: 5,
-        right: 5,
+        top: 5.w,
+        right: 5.w,
       ),
       padding: EdgeInsets.only(
         top: 16.w,
@@ -57,11 +57,9 @@ class WagerCardWidget extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   /*Expanded(
-                        child:*/
-                  Container(
+                        child: */Container(
                     width: MediaQuery.of(context).size.width / 2.5,
                     height: 150,
                     decoration: const BoxDecoration(
@@ -77,36 +75,32 @@ class WagerCardWidget extends StatelessWidget {
                       children: [
                         home.isNotEmpty
                             ? TeamNameInitialLogoWidget(
-                                name: home,
-                                height: 56.w,
-                                width: 56.w,
-                              )
+                          name: home,
+                          height: 56.w,
+                          width: 56.w,
+                        )
                             : Container(
-                                height: 56.w,
-                                width: 56.w,
-                                decoration: const BoxDecoration(
-                                  color: AppColors.red,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
+                          height: 56.w,
+                          width: 56.w,
+                          decoration: const BoxDecoration(
+                            color: AppColors.red,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
                         ColumnSpacer(12.w),
-                        Padding(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Flexible(
-                                child: Text(
-                              home,
-                              style: AppTextStyle.semibold12.copyWith(
-                                color: AppColors.whiteColor,
-                              ),
-                            ))),
+                        Text(
+                          home,
+                          style: AppTextStyle.semibold12.copyWith(
+                            color: AppColors.whiteColor,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                  // ),
+                  //  ),
                   const RowSpacer(3),
-                  /*Expanded(
-                        child:*/
-                  Container(
+                  /* Expanded(
+                        child:*/ Container(
                     width: MediaQuery.of(context).size.width / 2.5,
                     height: 150,
                     decoration: const BoxDecoration(
@@ -121,29 +115,22 @@ class WagerCardWidget extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         away.isNotEmpty
-                            ? TeamNameInitialLogoWidget(
-                                name: away,
-                                height: 56.w,
-                                width: 56.w,
-                              )
+                            ? TeamNameInitialLogoWidget(name: away,height: 56.w,width: 56.w)
                             : Container(
-                                height: 56.w,
-                                width: 56.w,
-                                decoration: const BoxDecoration(
-                                  color: AppColors.red,
-                                  shape: BoxShape.circle,
-                                ),
-                              ),
+                          height: 56.w,
+                          width: 56.w,
+                          decoration: const BoxDecoration(
+                            color: AppColors.red,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
                         ColumnSpacer(12.w),
-                        Padding(
-                            padding: EdgeInsets.only(left: 5),
-                            child: Flexible(
-                                child: Text(
-                              away,
-                              style: AppTextStyle.semibold12.copyWith(
-                                color: AppColors.whiteColor,
-                              ),
-                            ))),
+                        Text(
+                          away,
+                          style: AppTextStyle.semibold12.copyWith(
+                            color: AppColors.whiteColor,
+                          ),
+                        ),
                       ],
                     ),
                   ),

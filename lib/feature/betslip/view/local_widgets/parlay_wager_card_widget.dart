@@ -33,8 +33,8 @@ class ParlayWagerCardWidget extends StatelessWidget {
         Container(
           width: MediaQuery.of(context).size.width,
           margin: EdgeInsets.only(
-            top: 5,
-            right: 5,
+            top: 5.w,
+            right: 5.w,
           ),
           padding: EdgeInsets.only(
             top: 16.w,
