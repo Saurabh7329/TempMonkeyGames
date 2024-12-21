@@ -65,7 +65,7 @@ class _ContestsDetailPageState extends State<ContestDetailPage> {
       final response = await AppDio().getRequest(
         path: '/leaders',
         queryParameters: {
-          'contest':'202',
+          'contest':widget.contest.id,
         },
       );
       if (response.statusCode == 200) {
@@ -174,14 +174,14 @@ class _ContestsDetailPageState extends State<ContestDetailPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppOutlineButton(
+                /*AppOutlineButton(
                     title: 'Load More',
                     function: () => widget.loadMore(),
                     borderColor: AppColors.red,
                     backgroundColor: Colors.transparent),
                 SizedBox(
                   height: 16.h,
-                ),
+                ),*/
                 Text(
                   'Content details',
                   style: basycStyle.copyWith(
@@ -211,16 +211,5 @@ class _ContestsDetailPageState extends State<ContestDetailPage> {
 
   String parseDate(String date) {
     return DateFormat('dd/MM/yyyy').format(DateTime.parse(date));
-  }
-
-  _buildPosts(BuildContext context) {
-    return Column(children: [
-      Row(children: [
-        Text("Rank",style: AppTextStyle.bold14,),
-        Text("Player",style: AppTextStyle.bold14,),
-        Text("Score",style: AppTextStyle.bold14,)
-
-      ],)
-    ],);
   }
 }
