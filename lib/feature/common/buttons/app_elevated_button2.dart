@@ -50,7 +50,11 @@ class AppElevatedButton2 extends StatelessWidget {
             child: Center(
                 child: Text(
               title,
-              style: AppTextStyle.veryBold14.copyWith(fontSize: 16.sp),
+              style: basycStyle.copyWith(
+                fontWeight: FontWeight.w700,
+                fontSize: 14.sp,
+                color: Colors.white
+              ),
             )),
           ),
         ),
