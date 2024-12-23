@@ -34,8 +34,9 @@ class LoginPage extends StatelessWidget {
 
             padding: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/auth/login_bg.png"), fit: BoxFit.cover),
+              /*image: DecorationImage(
+                  image: AssetImage("assets/images/auth/login_bg.png"), fit: BoxFit.cover),*/
+              color: AppColors.darkNaviBlue
             ),
             child:
           Column(

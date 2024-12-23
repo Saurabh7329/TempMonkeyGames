@@ -15,7 +15,7 @@ import 'package:freeplay/feature/auth/auth.dart';
 import 'package:freeplay/feature/auth/bloc/login_bloc.dart';
 import 'package:freeplay/feature/auth/view/pages/gradient_text.dart';
 import 'package:freeplay/feature/common/app_loading.dart';
-import 'package:freeplay/feature/common/buttons/app_elevated_button.dart';
+import 'package:freeplay/feature/common/buttons/app_elevated_button2.dart';
 import 'package:freeplay/feature/common/buttons/app_outline_button.dart';
 
 import '../../../../core/dio/app_dio.dart';
@@ -132,7 +132,7 @@ class _AuthPageState extends State<AuthPage> {
                             SizedBox(
                               height: 50.h,
                             ),
-                            AppElevatedButton(
+                            AppElevatedButton2(
                               title: 'Register',
                               function: () {
                                 context.router.push(AuthBuilderRoute(
