@@ -14,20 +14,18 @@ import 'package:freeplay/feature/account/view/widgets/account_page_item.dart';
 import 'package:freeplay/feature/account/view/widgets/account_page_lead_item.dart';
 import 'package:freeplay/feature/account/view/widgets/app_version_widget.dart';
 import 'package:freeplay/feature/auth/auth.dart';
-import 'package:freeplay/feature/auth/bloc/login_bloc.dart';
 import 'package:freeplay/feature/common/app_loading.dart';
 import 'package:freeplay/feature/common/basic_app_widget.dart';
 import 'package:freeplay/feature/common/dialog/app_dialog.dart';
 import 'package:freeplay/feature/home/bloc/bottom_nav_bar_bloc/bottom_nav_bar_bloc.dart';
-import 'package:freeplay/feature/home/view/local_widgets/dynamic_image_view.dart';
 import 'package:global_snack_bar/global_snack_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/local_storage/local_storage_service.dart';
+import '../../../common/buttons/app_text_button2.dart';
 import '../../../home/bloc/home_banner_bloc/home_banner_bloc.dart';
 import '../../../home/bloc/home_banner_bloc/home_banner_event.dart';
-import '../../../home/bloc/home_banner_bloc/home_banner_state.dart';
 
 enum UserType { player, guest }
 
@@ -73,8 +71,9 @@ class _AccountBuilderState extends State<AccountBuilder> {
                       ),
                       AccountPageLeadItem(
                         balance: value.user.wallet.toString(),
-                        name:
-                            isGuest ? 'Guest' : value.user.username ?? 'User Name',
+                        name: isGuest
+                            ? 'Guest'
+                            : value.user.username ?? 'User Name',
                       ),
                       /*BlocBuilder<HomeBannerBloc, HomeBannerState>(
                         builder: (context, state) {
@@ -104,7 +103,8 @@ class _AccountBuilderState extends State<AccountBuilder> {
                         isTop: true,
                         title: 'FAQ',
                         onTap: () {
-                          var terms = LocalStorage.getConfiguration(CONFIGURATION);
+                          var terms =
+                              LocalStorage.getConfiguration(CONFIGURATION);
                           if (terms != null) {
                             _launchInWebView(terms.data.faq);
                           }
@@ -130,7 +130,8 @@ class _AccountBuilderState extends State<AccountBuilder> {
                           : AccountPageItem(
                               title: 'Support',
                               onTap: () {
-                                var terms = LocalStorage.getConfiguration(CONFIGURATION);
+                                var terms = LocalStorage.getConfiguration(
+                                    CONFIGURATION);
                                 if (terms != null) {
                                   _launchInWebView(terms.data.support);
                                 }
@@ -141,7 +142,8 @@ class _AccountBuilderState extends State<AccountBuilder> {
                         isTop: true,
                         title: 'Term & Conditions',
                         onTap: () {
-                          var terms = LocalStorage.getConfiguration(CONFIGURATION);
+                          var terms =
+                              LocalStorage.getConfiguration(CONFIGURATION);
                           if (terms != null) {
                             _launchInWebView(terms.data.termConditions);
                           }
@@ -151,7 +153,8 @@ class _AccountBuilderState extends State<AccountBuilder> {
                         isTop: true,
                         title: 'Privacy Policy',
                         onTap: () {
-                          var terms = LocalStorage.getConfiguration(CONFIGURATION);
+                          var terms =
+                              LocalStorage.getConfiguration(CONFIGURATION);
                           if (terms != null) {
                             _launchInWebView(terms.data.privacyPolicy);
                           }
@@ -161,6 +164,10 @@ class _AccountBuilderState extends State<AccountBuilder> {
                         title: 'Log Out',
                         onTap: () {
                           showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  logoutDialogue(context,"Log out", "Log out", 1));
+                          /*showDialog(
                               useSafeArea: false,
                               context: _scaffoldKey.currentContext!,
                               builder: (dialogContext) {
@@ -198,31 +205,11 @@ class _AccountBuilderState extends State<AccountBuilder> {
                                         },
                                       )),
                                 );
-                              });
+                              });*/
                         },
                         isBottom: true,
                       ),
-                      // SizedBox(
-                      //   height: 8.h,
-                      // ),
-                      // AccountPageItem(
-                      //   isTop: true,
-                      //   title: 'About Brand Name',
-                      //   onTap: () {},
-                      // ),
-                      // AccountPageItem(
-                      //   title: 'Terms & Conditions',
-                      //   onTap: () {},
-                      // ),
-                      // AccountPageItem(
-                      //   title: 'Privacy Policy',
-                      //   onTap: () {},
-                      // ),
-                      // AccountPageItem(
-                      //   title: 'Responsible Gambling',
-                      //   onTap: () {},
-                      //   isBottom: true,
-                      // ),
+
                       SizedBox(
                         height: 4.h,
                       ),
@@ -231,6 +218,10 @@ class _AccountBuilderState extends State<AccountBuilder> {
                           title: 'Delete account',
                           onTap: () {
                             showDialog(
+                                context: context,
+                                builder: (BuildContext context) =>
+                                    logoutDialogue(context,"Delete account", "Delete", 2));
+                            /* showDialog(
                                 useSafeArea: false,
                                 context: context,
                                 builder: (context) {
@@ -250,7 +241,7 @@ class _AccountBuilderState extends State<AccountBuilder> {
                                           },
                                         )),
                                   );
-                                });
+                                });*/
                           },
                           isBottom: true,
                           isTop: true,
@@ -278,5 +269,66 @@ class _AccountBuilderState extends State<AccountBuilder> {
     } else {
       await launchUrl(url);
     }
+  }
+
+  logoutDialogue(BuildContext context,String title, String action, int value) {
+    return AlertDialog(
+        backgroundColor: AppColors.lightgrey,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        content: Column(mainAxisSize: MainAxisSize.min, children: [
+          Text(title,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              )),
+          Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text("Are you sure?",
+                  style: basycStyle.copyWith(
+                    color: AppColors.whities,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 12.sp,
+                  ))),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              AppTextButton2(
+                text: 'Cancel',
+                function: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              AppTextButton2(
+                  text: action,
+                  function: () {
+                    if (value == 1) {
+                      context
+                          .read<AccountBloc>()
+                          .add(AccountEvent.logOut(onFail: () {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(
+                              content: Text(
+                                  'Cannot log out. Please try again later',
+                                  style: AppTextStyle.subtitle),
+                              backgroundColor: AppColors.red,
+                            ));
+                          }, onSuccess: () {
+                            context
+                                .read<BottomNavBarBloc>()
+                                .add(const BottomNavBarEvent.onTap(0));
+                            context.router.replace(const AuthPageRoute());
+                          }));
+                    }
+                    if (value == 2) {
+                      context.router.push(DeleteAccountPasswordPageRoute());
+                    }
+                  }),
+            ],
+          )
+        ]));
   }
 }
