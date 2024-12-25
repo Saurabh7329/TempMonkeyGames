@@ -276,22 +276,26 @@ class _AccountBuilderState extends State<AccountBuilder> {
         backgroundColor: AppColors.lightgrey,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
-        content: Column(mainAxisSize: MainAxisSize.min, children: [
+        content: SizedBox(
+          height: 103,
+          child: Column(mainAxisSize: MainAxisSize.min, children: [
           Text(title,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,
               )),
-          Padding(
-              padding: const EdgeInsets.all(10),
-              child: Text("Are you sure?",
+          Text("Are you sure?",
                   style: basycStyle.copyWith(
                     color: AppColors.whities,
                     fontWeight: FontWeight.w400,
                     fontSize: 12.sp,
-                  ))),
+                  )),
           const SizedBox(
             height: 10,
+          ),
+          Container(
+            height: 1,          // Thickness of the line
+            color: Colors.grey, // Color of the line
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -302,6 +306,11 @@ class _AccountBuilderState extends State<AccountBuilder> {
                   Navigator.of(context).pop();
                 },
               ),
+              Container(
+                width: 1,
+                height: 35,          // Thickness of the line
+                color: Colors.grey, // Color of the line
+              ),
               AppTextButton2(
                   text: action,
                   function: () {
@@ -309,19 +318,19 @@ class _AccountBuilderState extends State<AccountBuilder> {
                       context
                           .read<AccountBloc>()
                           .add(AccountEvent.logOut(onFail: () {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar(SnackBar(
-                              content: Text(
-                                  'Cannot log out. Please try again later',
-                                  style: AppTextStyle.subtitle),
-                              backgroundColor: AppColors.red,
-                            ));
-                          }, onSuccess: () {
-                            context
-                                .read<BottomNavBarBloc>()
-                                .add(const BottomNavBarEvent.onTap(0));
-                            context.router.replace(const AuthPageRoute());
-                          }));
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(SnackBar(
+                          content: Text(
+                              'Cannot log out. Please try again later',
+                              style: AppTextStyle.subtitle),
+                          backgroundColor: AppColors.red,
+                        ));
+                      }, onSuccess: () {
+                        context
+                            .read<BottomNavBarBloc>()
+                            .add(const BottomNavBarEvent.onTap(0));
+                        context.router.replace(const AuthPageRoute());
+                      }));
                     }
                     if (value == 2) {
                       context.router.push(DeleteAccountPasswordPageRoute());
@@ -329,6 +338,6 @@ class _AccountBuilderState extends State<AccountBuilder> {
                   }),
             ],
           )
-        ]));
+        ]),));
   }
 }
