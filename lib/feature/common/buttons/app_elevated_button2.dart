@@ -52,7 +52,7 @@ class AppElevatedButton2 extends StatelessWidget {
               title,
               style: basycStyle.copyWith(
                 fontWeight: FontWeight.w700,
-                fontSize: 14.sp,
+                fontSize: 18.sp,
                 color: Colors.white
               ),
             )),

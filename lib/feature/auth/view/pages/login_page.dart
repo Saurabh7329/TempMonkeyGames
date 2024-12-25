@@ -125,7 +125,7 @@ class LoginPage extends StatelessWidget {
           ),
         ),
       ),
-      title: 'Log In',
+      // title: 'Log In',
     );
   }
 }

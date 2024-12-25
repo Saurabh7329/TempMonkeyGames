@@ -141,7 +141,7 @@ class RegisterPage extends StatelessWidget {
           ),
         ),
       ),
-      title: 'Register',
+      // title: 'Register',
     );
   }
 }

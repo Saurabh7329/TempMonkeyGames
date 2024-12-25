@@ -142,7 +142,7 @@ class _AuthPageState extends State<AuthPage> {
                             SizedBox(
                               height: 12.h,
                             ),
-                            AppOutlineButton(
+                            AppOutlineButton2(
                               title: 'Login',
                               backgroundColor: Colors.transparent,
                               borderColor: AppColors.red,
