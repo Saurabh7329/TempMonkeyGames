@@ -19,9 +19,47 @@ class AppDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData.dark(),
-      child: CupertinoAlertDialog(
+    return AlertDialog(
+      backgroundColor: AppColors.greyDarkColor,
+      title: Text(
+        title,
+        style: basycStyle.copyWith(
+            fontWeight: FontWeight.w600,
+            fontSize: 16.sp,
+            color: AppColors.whities
+        ),
+      ),
+      content: Text(
+        'Are you sure?',
+        style: basycStyle.copyWith(
+          color: AppColors.whities,
+          fontWeight: FontWeight.w400,
+          fontSize: 12.sp,
+        ),
+      ),
+      actions: <Widget>[
+        /*TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text('Cancel'),
+        ),
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: Text('OK'),
+        ),*/
+        AppTextButton2(
+          text: 'Cancel',
+          function: () {
+            Navigator.pop(dialogContext);
+          },
+        ),
+        AppTextButton2(
+            text: action,
+            function: () {
+              Navigator.pop(dialogContext);
+              confirm();}
+        ),
+      ],
+    ); /* CupertinoAlertDialog(
         title: Text(
           title,
           style: basycStyle.copyWith(
@@ -52,7 +90,7 @@ class AppDialog extends StatelessWidget {
                confirm();}
           ),
         ],
-      ),
-    );
+
+    )*/;
   }
 }

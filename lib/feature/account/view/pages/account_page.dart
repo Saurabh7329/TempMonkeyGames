@@ -163,21 +163,22 @@ class _AccountBuilderState extends State<AccountBuilder> {
                       AccountPageItem(
                         title: 'Log Out',
                         onTap: () {
-                          showDialog(
+                          /*showDialog(
                               context: context,
                               builder: (BuildContext context) =>
-                                  logoutDialogue(context,"Log out", "Log out", 1));
-                          /*showDialog(
+                                  logoutDialogue(context,"Log out", "Log out", 1));*/
+                          showDialog(
                               useSafeArea: false,
                               context: _scaffoldKey.currentContext!,
                               builder: (dialogContext) {
                                 return Container(
-                                  height: 190.r,
                                   color: Colors.transparent,
                                   child: BackdropFilter(
                                       filter: ImageFilter.blur(
                                           sigmaX: 1.5, sigmaY: 1.5),
-                                      child: AppDialog(
+                                      child: //logoutDialogue(context,"Log out", "Log out", 1);
+                                 // ),
+                                 AppDialog(
                                         dialogContext: dialogContext,
                                         title: 'Log out',
                                         action: 'Log out',
@@ -203,9 +204,9 @@ class _AccountBuilderState extends State<AccountBuilder> {
                                                     const AuthPageRoute());
                                               }));
                                         },
-                                      )),
-                                );
-                              });*/
+                                      )
+                                ));
+                              });
                         },
                         isBottom: true,
                       ),
@@ -217,11 +218,11 @@ class _AccountBuilderState extends State<AccountBuilder> {
                         AccountPageItem(
                           title: 'Delete account',
                           onTap: () {
-                            showDialog(
+                            /*showDialog(
                                 context: context,
                                 builder: (BuildContext context) =>
-                                    logoutDialogue(context,"Delete account", "Delete", 2));
-                            /* showDialog(
+                                    logoutDialogue(context,"Delete account", "Delete", 2));*/
+                            showDialog(
                                 useSafeArea: false,
                                 context: context,
                                 builder: (context) {
@@ -241,7 +242,7 @@ class _AccountBuilderState extends State<AccountBuilder> {
                                           },
                                         )),
                                   );
-                                });*/
+                                });
                           },
                           isBottom: true,
                           isTop: true,
@@ -273,11 +274,11 @@ class _AccountBuilderState extends State<AccountBuilder> {
 
   logoutDialogue(BuildContext context,String title, String action, int value) {
     return AlertDialog(
-        backgroundColor: AppColors.lightgrey,
+        backgroundColor: AppColors.whiteColor,
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(10))),
         content: SizedBox(
-          height: 103,
+          height: 95,
           child: Column(mainAxisSize: MainAxisSize.min, children: [
           Text(title,
               style: const TextStyle(
@@ -291,27 +292,61 @@ class _AccountBuilderState extends State<AccountBuilder> {
                     fontSize: 12.sp,
                   )),
           const SizedBox(
-            height: 10,
+            height: 2,
           ),
           Container(
-            height: 1,          // Thickness of the line
+            height: .5,          // Thickness of the line
             color: Colors.grey, // Color of the line
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              AppTextButton2(
-                text: 'Cancel',
-                function: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+              Flexible(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: AppColors.whiteColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12), // <-- Radius
+                    ),
+                  ),
+                  child: Text(
+                    "Cancel",
+                    style: basycStyle.copyWith(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16.sp,
+                        color: AppColors.whities
+                    ),
+                ),
+              )),
               Container(
-                width: 1,
-                height: 35,          // Thickness of the line
+                width: .5,
+                height: 40,          // Thickness of the line
                 color: Colors.grey, // Color of the line
               ),
-              AppTextButton2(
+              Flexible(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: AppColors.darkNaviBlue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12), // <-- Radius
+                      ),
+                    ),
+                    child: Text(
+                      action,
+                      style: basycStyle.copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16.sp,
+                          color: AppColors.whities
+                      ),
+                    ),
+                  )),
+             /* AppTextButton2(
                   text: action,
                   function: () {
                     if (value == 1) {
@@ -335,7 +370,7 @@ class _AccountBuilderState extends State<AccountBuilder> {
                     if (value == 2) {
                       context.router.push(DeleteAccountPasswordPageRoute());
                     }
-                  }),
+                  }),*/
             ],
           )
         ]),));
