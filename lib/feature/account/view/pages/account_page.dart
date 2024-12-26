@@ -14,18 +14,20 @@ import 'package:freeplay/feature/account/view/widgets/account_page_item.dart';
 import 'package:freeplay/feature/account/view/widgets/account_page_lead_item.dart';
 import 'package:freeplay/feature/account/view/widgets/app_version_widget.dart';
 import 'package:freeplay/feature/auth/auth.dart';
+import 'package:freeplay/feature/auth/bloc/login_bloc.dart';
 import 'package:freeplay/feature/common/app_loading.dart';
 import 'package:freeplay/feature/common/basic_app_widget.dart';
 import 'package:freeplay/feature/common/dialog/app_dialog.dart';
 import 'package:freeplay/feature/home/bloc/bottom_nav_bar_bloc/bottom_nav_bar_bloc.dart';
+import 'package:freeplay/feature/home/view/local_widgets/dynamic_image_view.dart';
 import 'package:global_snack_bar/global_snack_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../../core/constants/constants.dart';
 import '../../../../core/local_storage/local_storage_service.dart';
-import '../../../common/buttons/app_text_button2.dart';
 import '../../../home/bloc/home_banner_bloc/home_banner_bloc.dart';
 import '../../../home/bloc/home_banner_bloc/home_banner_event.dart';
+import '../../../home/bloc/home_banner_bloc/home_banner_state.dart';
 
 enum UserType { player, guest }
 
@@ -163,16 +165,13 @@ class _AccountBuilderState extends State<AccountBuilder> {
                       AccountPageItem(
                         title: 'Log Out',
                         onTap: () {
-                          /*showDialog(
-                              context: context,
-                              builder: (BuildContext context) =>
-                                  logoutDialogue(context,"Log out", "Log out", 1));*/
                           showDialog(
                               useSafeArea: false,
                               context: _scaffoldKey.currentContext!,
                               builder: (dialogContext) {
                                 return Container(
-                                  color: Colors.transparent,
+                                    height: 190.r,
+                                    color: Colors.transparent,
                                   child: BackdropFilter(
                                       filter: ImageFilter.blur(
                                           sigmaX: 1.5, sigmaY: 1.5),
@@ -218,10 +217,6 @@ class _AccountBuilderState extends State<AccountBuilder> {
                         AccountPageItem(
                           title: 'Delete account',
                           onTap: () {
-                            /*showDialog(
-                                context: context,
-                                builder: (BuildContext context) =>
-                                    logoutDialogue(context,"Delete account", "Delete", 2));*/
                             showDialog(
                                 useSafeArea: false,
                                 context: context,
@@ -229,10 +224,7 @@ class _AccountBuilderState extends State<AccountBuilder> {
                                   return Container(
                                     height: 190.r,
                                     color: Colors.transparent,
-                                    child: BackdropFilter(
-                                        filter: ImageFilter.blur(
-                                            sigmaX: 1.5, sigmaY: 1.5),
-                                        child: AppDialog(
+                                    child: AppDialog(
                                           dialogContext: context,
                                           title: 'Delete account',
                                           action: 'Delete',
@@ -240,7 +232,7 @@ class _AccountBuilderState extends State<AccountBuilder> {
                                             context.router.push(
                                                 DeleteAccountPasswordPageRoute());
                                           },
-                                        )),
+                                        ),
                                   );
                                 });
                           },
@@ -270,109 +262,5 @@ class _AccountBuilderState extends State<AccountBuilder> {
     } else {
       await launchUrl(url);
     }
-  }
-
-  logoutDialogue(BuildContext context,String title, String action, int value) {
-    return AlertDialog(
-        backgroundColor: AppColors.whiteColor,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        content: SizedBox(
-          height: 95,
-          child: Column(mainAxisSize: MainAxisSize.min, children: [
-          Text(title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-              )),
-          Text("Are you sure?",
-                  style: basycStyle.copyWith(
-                    color: AppColors.whities,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12.sp,
-                  )),
-          const SizedBox(
-            height: 2,
-          ),
-          Container(
-            height: .5,          // Thickness of the line
-            color: Colors.grey, // Color of the line
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Flexible(
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: AppColors.whiteColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12), // <-- Radius
-                    ),
-                  ),
-                  child: Text(
-                    "Cancel",
-                    style: basycStyle.copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 16.sp,
-                        color: AppColors.whities
-                    ),
-                ),
-              )),
-              Container(
-                width: .5,
-                height: 40,          // Thickness of the line
-                color: Colors.grey, // Color of the line
-              ),
-              Flexible(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    style: ElevatedButton.styleFrom(
-                      foregroundColor: AppColors.darkNaviBlue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12), // <-- Radius
-                      ),
-                    ),
-                    child: Text(
-                      action,
-                      style: basycStyle.copyWith(
-                          fontWeight: FontWeight.w600,
-                          fontSize: 16.sp,
-                          color: AppColors.whities
-                      ),
-                    ),
-                  )),
-             /* AppTextButton2(
-                  text: action,
-                  function: () {
-                    if (value == 1) {
-                      context
-                          .read<AccountBloc>()
-                          .add(AccountEvent.logOut(onFail: () {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(SnackBar(
-                          content: Text(
-                              'Cannot log out. Please try again later',
-                              style: AppTextStyle.subtitle),
-                          backgroundColor: AppColors.red,
-                        ));
-                      }, onSuccess: () {
-                        context
-                            .read<BottomNavBarBloc>()
-                            .add(const BottomNavBarEvent.onTap(0));
-                        context.router.replace(const AuthPageRoute());
-                      }));
-                    }
-                    if (value == 2) {
-                      context.router.push(DeleteAccountPasswordPageRoute());
-                    }
-                  }),*/
-            ],
-          )
-        ]),));
   }
 }
