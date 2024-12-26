@@ -328,14 +328,14 @@ return Scaffold(
         topLeft: Radius.circular(14),
         topRight: Radius.circular(14),
       )*/
-      boxShadow: [
+      /*boxShadow: [
         BoxShadow(
           offset: Offset(0, 6),
           blurRadius: 8,
           spreadRadius: 10,
           color: Color.fromRGBO(0, 0, 0, 0.16),
         ),
-      ],
+      ],*/
     ),
     child: Material(
         elevation: 0,
