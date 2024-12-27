@@ -220,12 +220,13 @@ class _HomeViewState extends State<HomeView> {
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
+      removeBottom: true,
       child: GlobalMsgWrapper(
         BasicAppWidget(
           showBack: false,
           hasAppBar: false,
           scaffoldKey: _scaffoldKey,
-          customHeight: MediaQuery.of(context).size.height * 0.95,
+          customHeight: MediaQuery.of(context).size.height,
           content: BlocBuilder<AccountBloc, AccountState>(
             bloc: getIt<AccountBloc>()..add(const AccountEvent.getUser()),
             builder: (context, state) {
@@ -650,11 +651,13 @@ class _HomeViewState extends State<HomeView> {
                         AppElevatedButton(
                           title: 'Add to Wagers',
                           function: () {
-                            _panelController.close();
-                            context
-                                .read<WagerBloc>()
-                                .add(const WagerEvent.createWager());
-                            _focusNode.unfocus();
+                            Future.delayed(const Duration(seconds: 5), () async {
+                              _panelController.close();
+                              context
+                                  .read<WagerBloc>()
+                                  .add(const WagerEvent.createWager());
+                              _focusNode.unfocus();
+                            });
                           },
                           isDisabled: state.amount == '',
                         ),
