@@ -141,6 +141,20 @@ class _ParlayContentState extends State<_ParlayContent> {
         if (state.deletingStatus.isSuccess) {
           ScaffoldMessenger.of(context)
               .showSnackBar(const SnackBar(content: Text('Success!!!')));
+          var homePageState = context.findAncestorStateOfType<HomePageState>();
+          if (homePageState != null) {
+            homePageState.setState(() {
+              var betCount = LocalStorage.getInt(BETSLIPCOUNT)! - 1;
+              if (betCount > 0) {
+                LocalStorage.setInt(BETSLIPCOUNT, betCount);
+              } else {
+                LocalStorage.setInt(BETSLIPCOUNT, 0);
+              }
+            });;
+          }
+          else {
+            print('HomePageState not found');
+          }
         }
       },
       builder: (context, state) {

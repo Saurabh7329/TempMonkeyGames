@@ -651,13 +651,11 @@ class _HomeViewState extends State<HomeView> {
                         AppElevatedButton(
                           title: 'Add to Wagers',
                           function: () {
-                            Future.delayed(const Duration(seconds: 5), () async {
                               _panelController.close();
                               context
                                   .read<WagerBloc>()
                                   .add(const WagerEvent.createWager());
                               _focusNode.unfocus();
-                            });
                           },
                           isDisabled: state.amount == '',
                         ),
