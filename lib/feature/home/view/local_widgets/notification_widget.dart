@@ -11,6 +11,10 @@ class NotificationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(
+        top: 8.h,
+        bottom: 8.h,
+      ),
       decoration: BoxDecoration(
           color: AppColors.lightgrey,
           borderRadius: BorderRadius.circular(8)),

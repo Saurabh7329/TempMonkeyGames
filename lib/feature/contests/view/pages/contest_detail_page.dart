@@ -94,14 +94,19 @@ class _ContestsDetailPageState extends State<ContestDetailPage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          /*
           ContestCard(
             isFull: true,
             contest: widget.contest,
-          ),
+          ), */
           Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
+                ContestCard(
+                  isFull: true,
+                  contest: widget.contest,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

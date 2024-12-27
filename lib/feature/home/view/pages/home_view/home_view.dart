@@ -217,6 +217,11 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    var betCount = LocalStorage.getInt(BETSLIPCOUNT)!;
+    var maxHeight = _focusNode.hasFocus ? 278.h : 355.h;
+    if (betCount == 0) {
+      maxHeight = maxHeight - 66;
+    }
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
@@ -237,7 +242,7 @@ class _HomeViewState extends State<HomeView> {
                   onTap: () => FocusScope.of(context).unfocus(),
                   child: SlidingUpPanel(
                     minHeight: 0,
-                    maxHeight: 285.h,//_focusNode.hasFocus ? 235.h : 285.h,
+                    maxHeight: maxHeight,
                     color: AppColors.darkNaviBlue,
                     controller: _panelController,
                     onPanelClosed: () {

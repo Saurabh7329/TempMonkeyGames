@@ -36,7 +36,7 @@ class ContestCard extends StatelessWidget {
           constraints: BoxConstraints(minHeight: 180.h),
           width: isFull ? size.width : size.width * 0.8,
           decoration: BoxDecoration(
-              borderRadius: isFull ? BorderRadius.zero :BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8),
               image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
               color: AppColors.lightNaviBlue),
 
