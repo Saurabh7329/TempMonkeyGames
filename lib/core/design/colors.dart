@@ -25,6 +25,7 @@ class AppColors {
   static const Color black = Color(0xFF151516);
   static const Color blue = Color(0xFF0A12F8);
   static const Color light = Color(0xFFF6F6F6);
+  static const Color green = Color(0xFF4AF510);
 
   final Shader gradient = const RadialGradient(radius: 3, colors: [
     AppColors.gardientDarkColor,

@@ -107,9 +107,16 @@ class _Header extends StatelessWidget {
           BlocConsumer<LeaguesBloc, LeaguesState>(
             listener: (context, state) {
               if (state.status.isSuccess && state.selectedLeague == null) {
-                context
-                    .read<HomeGamesBloc>()
-                    .add(const HomeGamesEvent.getGames());
+                if (state.leagues.isNotEmpty) {
+                  // Automatically select the first league if no league is selected
+                  final firstLeague = state.leagues.first;
+                  context.read<LeaguesBloc>().add(
+                      LeaguesEvent.onLeagueSelected(firstLeague));
+                  context.read<HomeGamesBloc>().add(
+                      HomeGamesEvent.getGames(league: firstLeague));
+                } else {
+                  context.read<HomeGamesBloc>().add(const HomeGamesEvent.getGames());
+                }
               }
             },
             builder: (context, state) {

@@ -38,6 +38,18 @@ class AppTextStyle {
     fontStyle: FontStyle.italic
   );
 
+  static TextStyle titleAuthXL = basycStyle.copyWith(
+      color: AppColors.whiteColor,
+      fontWeight: FontWeight.w900,
+      fontSize: 40.sp,
+  );
+
+  static TextStyle titleAuth = basycStyle.copyWith(
+    color: AppColors.whiteColor,
+    fontWeight: FontWeight.w900,
+    fontSize: 20.sp,
+  );
+
 static TextStyle titleXXL = basycStyle.copyWith(
     color: AppColors.whiteColor,
     fontWeight: FontWeight.w900,

@@ -54,7 +54,7 @@ class _AuthPageState extends State<AuthPage> {
 
   void loadAsset() async {
     Uint8List data =
-        (await rootBundle.load('assets/images/auth/auth_bg.png'))
+        (await rootBundle.load('assets/images/auth/login_bg.png'))
             .buffer
             .asUint8List();
     setState(() => imageData = data);
@@ -62,16 +62,16 @@ class _AuthPageState extends State<AuthPage> {
 
 
 
-  @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => getIt<LoginBloc>(),
-        child: BlocConsumer<LoginBloc, LoginState>(listener: (context, state) {
+      create: (context) => getIt<LoginBloc>(),
+      child: BlocConsumer<LoginBloc, LoginState>(
+        listener: (context, state) {
           if (state.logged == true) {
             context.router.navigate(const HomePageRoute());
-            // context.router.replace(const HomePageRoute());
           }
-        }, builder: (context, state) {
+        },
+        builder: (context, state) {
           if (state.isLoading) {
             return const AppLoading();
           }
@@ -79,103 +79,87 @@ class _AuthPageState extends State<AuthPage> {
             backgroundColor: AppColors.darkNaviBlue,
             body: imageData == null
                 ? const Center(
-                    child: CircularProgressIndicator(
-                        color: AppColors.red),
-                  )
+              child: CircularProgressIndicator(color: AppColors.red),
+            )
                 : Container(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: MemoryImage(imageData!, scale: 0.5),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: SafeArea(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Expanded(child: SizedBox()),
-                            /*const GradientText(
-                              'Risk free sports betting',
-                              style: TextStyle(fontSize: 28,color: AppColors.red),
-                              gradient:LinearGradient(colors: [
-                                Color.fromRGBO(189, 11, 49,1.0),
-                                Color.fromRGBO(189, 11, 49,1.0),
-                                Color.fromRGBO(189, 11, 49,1.0)
-                              ]) *//*LinearGradient(colors: [
-                                Color.fromRGBO(181, 56, 244,1.0),
-                                Color.fromRGBO(139, 59, 232,1.0),
-                                Color.fromRGBO(177, 56, 243,1.0)
-                              ])189, 11, 49*//*,
-                            ),*/
-                            // Image.asset(
-                            //   'assets/images/app_logo/freeplay_logo.png',
-                            //   height: 23.h,
-                            // ),
-                            const SizedBox(
-                              height: 20,
-                            ),
-                            /*Text(
-                              'Welcome to  5 Monkey Games',
-                              style: AppTextStyle.titleL,
-                            ),*/
-                            /*Padding(
-                              padding: const EdgeInsets.fromLTRB(0, 16, 0, 40),
-                              child: Text(
-                                'People all over the world are fond of sports and sport games.',
-                                style: AppTextStyle.subtitle.copyWith(
-                                  color: AppColors.red,
-                                ),
-                              ),
-                            ),*/
-                            SizedBox(
-                              height: 50.h,
-                            ),
-                            AppElevatedButton2(
-                              title: 'Register',
-                              function: () {
-                                context.router.push(AuthBuilderRoute(
-                                    authStatus: Auth.register));
-                              },
-                            ),
-                            SizedBox(
-                              height: 12.h,
-                            ),
-                            AppOutlineButton2(
-                              title: 'Login',
-                              backgroundColor: Colors.transparent,
-                              borderColor: AppColors.red,
-                              function: () {
-                                context.router.push(
-                                    AuthBuilderRoute(authStatus: Auth.login));
-                              },
-                            ),
-                            SizedBox(
-                              height: 12.h,
-                            ),
-                            if (showButton)
-                              AppOutlineButton(
-                                title: 'Continue as Guest',
-                                backgroundColor: Colors.transparent,
-                                borderColor: AppColors.red,
-                                function: () {
-                                  BlocProvider.of<LoginBloc>(context).add(const LoginEvent.loginAsGuest());
-                                },
-                              ),
-                            SizedBox(
-                              height: showButton ? 40.h : 0.h,
-                            ),
-                            SizedBox(
-                              height: 40.h,
-                            ),
-                          ],
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: MemoryImage(imageData!, scale: 0.5),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      // Align the logo at the top center
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Image.asset(
+                            'assets/images/app_logo/freeplay_logo.png',
+                            height: 120,
+                          ),
                         ),
                       ),
-                    )),
+                      const SizedBox(height: 80),
+                      Text(
+                        'Risk Free Sports Betting',
+                        style: AppTextStyle.titleAuthXL,
+                        textAlign: TextAlign.left,
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'People all over the world are fond of sports and sport games.',
+                        style: AppTextStyle.titleAuth,
+                        textAlign: TextAlign.left,
+                      ),
+                      const SizedBox(height: 40),
+                      AppElevatedButton2(
+                        title: 'Register',
+                        function: () {
+                          context.router.push(
+                            AuthBuilderRoute(authStatus: Auth.register),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      AppOutlineButton2(
+                        title: 'Login',
+                        backgroundColor: Colors.transparent,
+                        borderColor: AppColors.red,
+                        function: () {
+                          context.router.push(
+                            AuthBuilderRoute(authStatus: Auth.login),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 12),
+                      if (showButton)
+                        AppOutlineButton(
+                          title: 'Continue as Guest',
+                          backgroundColor: Colors.transparent,
+                          borderColor: AppColors.red,
+                          function: () {
+                            BlocProvider.of<LoginBloc>(context).add(
+                              const LoginEvent.loginAsGuest(),
+                            );
+                          },
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
           );
-        }));
+        },
+      ),
+    );
   }
+
 
   Future<void> retriveFirebaseToken() async {
     String? token = await FirebaseMessaging.instance.getToken();
