@@ -76,6 +76,7 @@ class _AccountBuilderState extends State<AccountBuilder> {
                         name: isGuest
                             ? 'Guest'
                             : value.user.username ?? 'User Name',
+                        email: isGuest ? "" : value.user.email ?? 'Email',
                       ),
                       /*BlocBuilder<HomeBannerBloc, HomeBannerState>(
                         builder: (context, state) {

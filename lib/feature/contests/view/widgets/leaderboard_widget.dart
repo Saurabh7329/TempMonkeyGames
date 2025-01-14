@@ -11,10 +11,10 @@ class LeaderboardWidget extends StatelessWidget {
   final List<LeaderBoardModel> leaderboard;
   final Leader? user;
   const LeaderboardWidget({super.key, required this.leaders, required this.user,required this.leaderboard});
-  
+
   @override
   Widget build(BuildContext context) {
-    leaders.remove(user);
+    leaders.removeWhere((leader) => leader.userId == user?.userId);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: Column(
@@ -26,6 +26,7 @@ class LeaderboardWidget extends StatelessWidget {
           SizedBox(
             height: 10.h,
           ),
+          // Conditionally display "TBD" message
           SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,9 +62,9 @@ class LeaderboardWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              '#${leaders[index].rank}',
+                              leaders[index].rank == 0 ? 'TBD' : '#${leaders[index].rank}',
                               style: AppTextStyle.body.copyWith(
-                                color: AppColors.purpleLightColor,
+                                color: AppColors.black,
                               ),
                             ),
                             const RowSpacer(60),
@@ -128,6 +129,14 @@ class LeaderboardWidget extends StatelessWidget {
                         ),
                       );
                     }),
+                // Conditionally display "TBD" message
+                SizedBox(
+                  height: 6.h,
+                ),
+                Text(
+                  '**TBD - No score rank to be determined',
+                  style: AppTextStyle.bodyXS.copyWith(color: AppColors.red),
+                ),
                 /*if (user != null)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),

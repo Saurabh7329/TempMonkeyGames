@@ -9,8 +9,9 @@ import '../../../home/view/local_widgets/balance_text_widget2.dart';
 class AccountPageLeadItem extends StatelessWidget {
   final String name;
   final String balance;
+  final String email;
   const AccountPageLeadItem(
-      {super.key, required this.name, required this.balance});
+      {super.key, required this.name, required this.balance, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class AccountPageLeadItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 1),
       child: Container(
         width: size.width * 0.9,
-        height: 100.h,
+        height: 120.h,
         decoration: BoxDecoration(
             color: AppColors.lightgrey,
             borderRadius: BorderRadius.circular(8)),
@@ -34,6 +35,14 @@ class AccountPageLeadItem extends StatelessWidget {
                 style: AppTextStyle.semiBold16
                     .copyWith(color: AppColors.black),
               ),
+              const Divider(
+                color: AppColors.lightgrey,
+              ),
+              Text(
+                 email,
+                  style: AppTextStyle.semiBold16
+                  .copyWith(color: AppColors.black),
+               ),
               const Divider(
                 color: AppColors.lightgrey,
               ),
