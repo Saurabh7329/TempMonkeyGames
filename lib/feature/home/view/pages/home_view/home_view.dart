@@ -61,7 +61,6 @@ class _HomeViewState extends State<HomeView> {
   CurrencyTextInputFormatter(
      decimalDigits: 0,
     symbol: '',
-
   );
   static bool _dialogShow = false;
 

@@ -16,13 +16,10 @@ class LeaderboardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     leaders.removeWhere((leader) => leader.userId == user?.userId);
 
-    // final bool hasRankOrScoreZero = leaderboard.any((leader) => leader.rank == 0 || leader.score == 0);
-
-    final bool allScoresZero = leaderboard.every((leader) => leader.score == 0);
-    print("allScoresZero");
-    print(allScoresZero);
-
-    final bool hasRankOrScoreZero = allScoresZero ? false : leaderboard.any((leader) => leader.rank == 0 || leader.score == 0);
+    final bool allScoresZero = leaderboard.every(
+          (leader) =>
+      leader.rank == leaderboard.first.rank && leader.score == 0,
+    );
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
@@ -46,15 +43,15 @@ class LeaderboardWidget extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Text('Rank',
+                      if (!allScoresZero)
+                        Text('Rank',
                           style: AppTextStyle.bodyXS
                               .copyWith(color: AppColors.purpleLightColor)),
-                      RowSpacer(allScoresZero ? 105 : 45),
+                      RowSpacer(allScoresZero ? 0 : 45),
                       Text('Player',
                           style: AppTextStyle.bodyXS
                               .copyWith(color: AppColors.purpleLightColor)),
                       const Expanded(child: SizedBox()),
-                      if (!allScoresZero)
                         Text('Bank',
                           style: AppTextStyle.bodyXS
                               .copyWith(color: AppColors.purpleLightColor))
@@ -89,7 +86,7 @@ class LeaderboardWidget extends StatelessWidget {
                             if (!allScoresZero)
                             const Expanded(child: SizedBox()),
                             Text(
-                              leaders[index].score == 0 ? 'TBD' : '#${leaders[index].score.toString()}',
+                              '${leaders[index].score.toString()}',
                               style: basycStyle.copyWith(
                                 color: AppColors.black,
                                 fontWeight: FontWeight.w600,
@@ -111,13 +108,14 @@ class LeaderboardWidget extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text(
+                            if (!allScoresZero)
+                              Text(
                               '#${leaderboard[index].rank}',
                               style: AppTextStyle.body.copyWith(
                                 color: AppColors.purpleLightColor,
                               ),
                             ),
-                            RowSpacer(allScoresZero ? 120.0 : 60.0),
+                            RowSpacer(allScoresZero ? 0.0 : 60.0),
                             Text(
                               leaderboard[index].username ?? 'Player',
                               style: basycStyle.copyWith(
@@ -127,11 +125,10 @@ class LeaderboardWidget extends StatelessWidget {
                               ),
                             ),
                             const Expanded(child: SizedBox()),
-                            if (!allScoresZero)
                               Text(
-                              leaderboard[index].score == 0 ? 'TBD' : '#${leaderboard[index].score.toString()}',
+                              '${leaderboard[index].score.toString()}',
                               style: basycStyle.copyWith(
-                                color: leaderboard[index].score == 0 ? AppColors.purpleLightColor : AppColors.black,
+                                color: AppColors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,
                               ),
@@ -141,15 +138,6 @@ class LeaderboardWidget extends StatelessWidget {
                         ),
                       );
                     }),
-                // Conditionally display "TBD" message
-                SizedBox(
-                  height: 6.h,
-                ),
-                if (hasRankOrScoreZero)
-                  Text(
-                  '**TBD - No score rank to be determined',
-                  style: AppTextStyle.bodyXS.copyWith(color: AppColors.red),
-                ),
                 /*if (user != null)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 4.0),
