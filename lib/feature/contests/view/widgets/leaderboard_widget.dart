@@ -15,6 +15,15 @@ class LeaderboardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     leaders.removeWhere((leader) => leader.userId == user?.userId);
+
+    // final bool hasRankOrScoreZero = leaderboard.any((leader) => leader.rank == 0 || leader.score == 0);
+
+    final bool allScoresZero = leaderboard.every((leader) => leader.score == 0);
+    print("allScoresZero");
+    print(allScoresZero);
+
+    final bool hasRankOrScoreZero = allScoresZero ? false : leaderboard.any((leader) => leader.rank == 0 || leader.score == 0);
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       child: Column(
@@ -40,12 +49,13 @@ class LeaderboardWidget extends StatelessWidget {
                       Text('Rank',
                           style: AppTextStyle.bodyXS
                               .copyWith(color: AppColors.purpleLightColor)),
-                      const RowSpacer(45),
+                      RowSpacer(allScoresZero ? 105 : 45),
                       Text('Player',
                           style: AppTextStyle.bodyXS
                               .copyWith(color: AppColors.purpleLightColor)),
                       const Expanded(child: SizedBox()),
-                      Text('Bank',
+                      if (!allScoresZero)
+                        Text('Bank',
                           style: AppTextStyle.bodyXS
                               .copyWith(color: AppColors.purpleLightColor))
                     ],
@@ -62,12 +72,12 @@ class LeaderboardWidget extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              leaders[index].rank == 0 ? 'TBD' : '#${leaders[index].rank}',
+                              '#${leaders[index].rank}',
                               style: AppTextStyle.body.copyWith(
                                 color: AppColors.black,
                               ),
                             ),
-                            const RowSpacer(60),
+                            RowSpacer(allScoresZero ? 120.0 : 60.0),
                             Text(
                               leaders[index].username ?? 'Player',
                               style: basycStyle.copyWith(
@@ -76,9 +86,10 @@ class LeaderboardWidget extends StatelessWidget {
                                 fontSize: 14.sp,
                               ),
                             ),
+                            if (!allScoresZero)
                             const Expanded(child: SizedBox()),
                             Text(
-                              leaders[index].score.toString(),
+                              leaders[index].score == 0 ? 'TBD' : '#${leaders[index].score.toString()}',
                               style: basycStyle.copyWith(
                                 color: AppColors.black,
                                 fontWeight: FontWeight.w600,
@@ -106,7 +117,7 @@ class LeaderboardWidget extends StatelessWidget {
                                 color: AppColors.purpleLightColor,
                               ),
                             ),
-                            const RowSpacer(60),
+                            RowSpacer(allScoresZero ? 120.0 : 60.0),
                             Text(
                               leaderboard[index].username ?? 'Player',
                               style: basycStyle.copyWith(
@@ -116,10 +127,11 @@ class LeaderboardWidget extends StatelessWidget {
                               ),
                             ),
                             const Expanded(child: SizedBox()),
-                            Text(
-                              leaderboard[index].score.toString(),
+                            if (!allScoresZero)
+                              Text(
+                              leaderboard[index].score == 0 ? 'TBD' : '#${leaderboard[index].score.toString()}',
                               style: basycStyle.copyWith(
-                                color: AppColors.black,
+                                color: leaderboard[index].score == 0 ? AppColors.purpleLightColor : AppColors.black,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 14.sp,
                               ),
@@ -133,7 +145,8 @@ class LeaderboardWidget extends StatelessWidget {
                 SizedBox(
                   height: 6.h,
                 ),
-                Text(
+                if (hasRankOrScoreZero)
+                  Text(
                   '**TBD - No score rank to be determined',
                   style: AppTextStyle.bodyXS.copyWith(color: AppColors.red),
                 ),
