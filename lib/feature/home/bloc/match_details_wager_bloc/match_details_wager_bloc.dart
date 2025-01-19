@@ -29,6 +29,7 @@ class MatchDetailsWagerBloc
       isActive: true,
       wagerType: event.wagerType,
       team: event.team,
+      oddsOption: event.oddsOption,
     ));
   }
 
@@ -45,6 +46,7 @@ class MatchDetailsWagerBloc
       gameID: event.gameID,
       team: state.team,
       type: state.wagerType,
+      oddsOption: state.oddsOption,
       amount: event.amount.toInt(),
     );
     final failureOrWager = await _mainFreePlayRepo.createWager(params);

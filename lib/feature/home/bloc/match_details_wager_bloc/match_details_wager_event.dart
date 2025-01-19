@@ -5,6 +5,7 @@ class MatchDetailsWagerEvent with _$MatchDetailsWagerEvent {
   const factory MatchDetailsWagerEvent.start({
     required String wagerType,
     required String team,
+    String oddsOption,
   }) = _Start;
   const factory MatchDetailsWagerEvent.stop() = _Stop;
   const factory MatchDetailsWagerEvent.createWager({

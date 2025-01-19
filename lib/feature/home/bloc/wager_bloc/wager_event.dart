@@ -6,6 +6,7 @@ class WagerEvent with _$WagerEvent {
     required Game game,
     required String wagerType,
     required String team,
+    String? oddsOption,
   }) = _Start;
   const factory WagerEvent.stop() = _Stop;
   const factory WagerEvent.onAmountChanged(String? value) = _OnChanged;

@@ -169,7 +169,8 @@ class _MatchDetailsPageState extends State<MatchDetailsPage> {
             context.read<MatchDetailsWagerBloc>().add(
                   const MatchDetailsWagerEvent.start(
                     wagerType: 'total',
-                    team: 'over',
+                    team: 'home',
+                    oddsOption: 'over',
                   ),
                 );
             _panelController.open();
@@ -181,7 +182,8 @@ class _MatchDetailsPageState extends State<MatchDetailsPage> {
             context.read<MatchDetailsWagerBloc>().add(
                   const MatchDetailsWagerEvent.start(
                     wagerType: 'total',
-                    team: 'under',
+                    team: 'away',
+                    oddsOption: 'under',
                   ),
                 );
             _panelController.open();

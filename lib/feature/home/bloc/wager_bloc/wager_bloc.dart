@@ -28,6 +28,7 @@ class WagerBloc extends Bloc<WagerEvent, WagerState> {
       game: event.game,
       wagerType: event.wagerType,
       team: event.team,
+      oddsOption: event.oddsOption,
     ));
   }
 
@@ -48,6 +49,7 @@ class WagerBloc extends Bloc<WagerEvent, WagerState> {
       gameID: state.game!.id,
       team: state.team,
       type: state.wagerType,
+      oddsOption: state.oddsOption,
       amount: double.parse(state.amount).toInt(),
     );
     final failureOrWager = await _mainFreePlayRepo.createWager(params);

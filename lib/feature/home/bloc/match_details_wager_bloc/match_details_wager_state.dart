@@ -7,9 +7,11 @@ class MatchDetailsWagerState extends Equatable {
 
   /// For total wager type there will be over or under
   final String team;
+  final String? oddsOption;
   final StateStatus status;
   final String errorMessage;
   const MatchDetailsWagerState({
+    this.oddsOption = '',
     this.isActive = false,
     this.wagerType = '',
     this.team = '',
@@ -18,6 +20,7 @@ class MatchDetailsWagerState extends Equatable {
   });
 
   MatchDetailsWagerState copyWith({
+    String? oddsOption,
     bool? isActive,
     String? wagerType,
     String? team,
@@ -28,6 +31,7 @@ class MatchDetailsWagerState extends Equatable {
       isActive: isActive ?? this.isActive,
       wagerType: wagerType ?? this.wagerType,
       team: team ?? this.team,
+      oddsOption: oddsOption ?? this.oddsOption,
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
     );
@@ -38,6 +42,7 @@ class MatchDetailsWagerState extends Equatable {
         isActive,
         wagerType,
         team,
+        oddsOption,
         status,
         errorMessage,
       ];

@@ -9,7 +9,10 @@ class WagerState extends Equatable {
   final String amount;
   final StateStatus status;
   final String errorMessage;
+  final String? oddsOption;
+
   const WagerState({
+    this.oddsOption = '',
     this.isActive = false,
     this.game,
     this.wagerType = '',
@@ -20,6 +23,7 @@ class WagerState extends Equatable {
   });
 
   WagerState copyWith({
+    String? oddsOption,
     bool? isActive,
     Game? game,
     String? wagerType,
@@ -33,6 +37,7 @@ class WagerState extends Equatable {
       game: game ?? this.game,
       wagerType: wagerType ?? this.wagerType,
       team: team ?? this.team,
+      oddsOption: oddsOption ?? this.oddsOption,
       amount: amount ?? this.amount,
       status: status ?? this.status,
       errorMessage: errorMessage ?? this.errorMessage,
@@ -45,6 +50,7 @@ class WagerState extends Equatable {
         game,
         wagerType,
         team,
+        oddsOption,
         amount,
         status,
         errorMessage,

@@ -18,21 +18,21 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MatchDetailsWagerEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String wagerType, String team) start,
+    required TResult Function(String wagerType, String team, String? oddsOption) start,
     required TResult Function() stop,
     required TResult Function(int gameID, double amount) createWager,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String wagerType, String team)? start,
+    TResult? Function(String wagerType, String team, String? oddsOption)? start,
     TResult? Function()? stop,
     TResult? Function(int gameID, double amount)? createWager,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String wagerType, String team)? start,
+    TResult Function(String wagerType, String team, String? oddsOption)? start,
     TResult Function()? stop,
     TResult Function(int gameID, double amount)? createWager,
     required TResult orElse(),
@@ -87,7 +87,7 @@ abstract class _$$StartImplCopyWith<$Res> {
           _$StartImpl value, $Res Function(_$StartImpl) then) =
       __$$StartImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String wagerType, String team});
+  $Res call({String wagerType, String team, String? oddsOption});
 }
 
 /// @nodoc
@@ -103,6 +103,7 @@ class __$$StartImplCopyWithImpl<$Res>
   $Res call({
     Object? wagerType = null,
     Object? team = null,
+    Object? oddsOption = freezed,
   }) {
     return _then(_$StartImpl(
       wagerType: null == wagerType
@@ -113,6 +114,10 @@ class __$$StartImplCopyWithImpl<$Res>
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
               as String,
+      oddsOption: freezed == oddsOption
+          ? _value.oddsOption
+          : oddsOption // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -120,116 +125,122 @@ class __$$StartImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StartImpl implements _Start {
-  const _$StartImpl({required this.wagerType, required this.team});
+const _$StartImpl({required this.wagerType, required this.team, this.oddsOption});
 
-  @override
-  final String wagerType;
-  @override
-  final String team;
+@override
+final String wagerType;
+@override
+final String team;
+@override
+final String? oddsOption;
 
-  @override
-  String toString() {
-    return 'MatchDetailsWagerEvent.start(wagerType: $wagerType, team: $team)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StartImpl &&
-            (identical(other.wagerType, wagerType) ||
-                other.wagerType == wagerType) &&
-            (identical(other.team, team) || other.team == team));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, wagerType, team);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StartImplCopyWith<_$StartImpl> get copyWith =>
-      __$$StartImplCopyWithImpl<_$StartImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String wagerType, String team) start,
-    required TResult Function() stop,
-    required TResult Function(int gameID, double amount) createWager,
-  }) {
-    return start(wagerType, team);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String wagerType, String team)? start,
-    TResult? Function()? stop,
-    TResult? Function(int gameID, double amount)? createWager,
-  }) {
-    return start?.call(wagerType, team);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String wagerType, String team)? start,
-    TResult Function()? stop,
-    TResult Function(int gameID, double amount)? createWager,
-    required TResult orElse(),
-  }) {
-    if (start != null) {
-      return start(wagerType, team);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Start value) start,
-    required TResult Function(_Stop value) stop,
-    required TResult Function(_CreateWager value) createWager,
-  }) {
-    return start(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Start value)? start,
-    TResult? Function(_Stop value)? stop,
-    TResult? Function(_CreateWager value)? createWager,
-  }) {
-    return start?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Start value)? start,
-    TResult Function(_Stop value)? stop,
-    TResult Function(_CreateWager value)? createWager,
-    required TResult orElse(),
-  }) {
-    if (start != null) {
-      return start(this);
-    }
-    return orElse();
-  }
+@override
+String toString() {
+return 'MatchDetailsWagerEvent.start(wagerType: $wagerType, team: $team, oddsOption: $oddsOption)';
 }
 
-abstract class _Start implements MatchDetailsWagerEvent {
-  const factory _Start(
-      {required final String wagerType,
-      required final String team}) = _$StartImpl;
+@override
+bool operator ==(Object other) {
+return identical(this, other) ||
+(other.runtimeType == runtimeType &&
+other is _$StartImpl &&
+(identical(other.wagerType, wagerType) ||
+other.wagerType == wagerType) &&
+(identical(other.team, team) || other.team == team) &&
+(identical(other.oddsOption, oddsOption) || other.oddsOption == oddsOption));
+}
 
-  String get wagerType;
-  String get team;
-  @JsonKey(ignore: true)
-  _$$StartImplCopyWith<_$StartImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+int get hashCode => Object.hash(runtimeType, wagerType, team, oddsOption);
+
+@JsonKey(ignore: true)
+@override
+@pragma('vm:prefer-inline')
+_$$StartImplCopyWith<_$StartImpl> get copyWith =>
+__$$StartImplCopyWithImpl<_$StartImpl>(this, _$identity);
+
+@override
+@optionalTypeArgs
+TResult when<TResult extends Object?>({
+required TResult Function(String wagerType, String team, String? oddsOption) start,
+required TResult Function() stop,
+required TResult Function(int gameID, double amount) createWager,
+}) {
+return start(wagerType, team, oddsOption);
+}
+
+@override
+@optionalTypeArgs
+TResult? whenOrNull<TResult extends Object?>({
+TResult? Function(String wagerType, String team, String? oddsOption)? start,
+TResult? Function()? stop,
+TResult? Function(int gameID, double amount)? createWager,
+}) {
+return start?.call(wagerType, team, oddsOption);
+}
+
+@override
+@optionalTypeArgs
+TResult maybeWhen<TResult extends Object?>({
+TResult Function(String wagerType, String team, String? oddsOption)? start,
+TResult Function()? stop,
+TResult Function(int gameID, double amount)? createWager,
+required TResult orElse(),
+}) {
+if (start != null) {
+return start(wagerType, team, oddsOption);
+}
+return orElse();
+}
+
+@override
+@optionalTypeArgs
+TResult map<TResult extends Object?>({
+required TResult Function(_Start value) start,
+required TResult Function(_Stop value) stop,
+required TResult Function(_CreateWager value) createWager,
+}) {
+return start(this);
+}
+
+@override
+@optionalTypeArgs
+TResult? mapOrNull<TResult extends Object?>({
+TResult? Function(_Start value)? start,
+TResult? Function(_Stop value)? stop,
+TResult? Function(_CreateWager value)? createWager,
+}) {
+return start?.call(this);
+}
+
+@override
+@optionalTypeArgs
+TResult maybeMap<TResult extends Object?>({
+TResult Function(_Start value)? start,
+TResult Function(_Stop value)? stop,
+TResult Function(_CreateWager value)? createWager,
+required TResult orElse(),
+}) {
+if (start != null) {
+return start(this);
+}
+return orElse();
+}
+}
+
+
+abstract class _Start implements MatchDetailsWagerEvent {
+const factory _Start(
+{required final String wagerType,
+required final String team,
+final String? oddsOption}) = _$StartImpl;
+
+String get wagerType;
+String get team;
+String? get oddsOption;
+@JsonKey(ignore: true)
+_$$StartImplCopyWith<_$StartImpl> get copyWith =>
+throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -269,7 +280,7 @@ class _$StopImpl implements _Stop {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String wagerType, String team) start,
+    required TResult Function(String wagerType, String team, String? oddsOption) start,
     required TResult Function() stop,
     required TResult Function(int gameID, double amount) createWager,
   }) {
@@ -279,7 +290,7 @@ class _$StopImpl implements _Stop {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String wagerType, String team)? start,
+    TResult? Function(String wagerType, String team, String? oddsOption)? start,
     TResult? Function()? stop,
     TResult? Function(int gameID, double amount)? createWager,
   }) {
@@ -289,7 +300,7 @@ class _$StopImpl implements _Stop {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String wagerType, String team)? start,
+    TResult Function(String wagerType, String team, String? oddsOption)? start,
     TResult Function()? stop,
     TResult Function(int gameID, double amount)? createWager,
     required TResult orElse(),
@@ -411,7 +422,7 @@ class _$CreateWagerImpl implements _CreateWager {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String wagerType, String team) start,
+    required TResult Function(String wagerType, String team, String? oddsOption) start,
     required TResult Function() stop,
     required TResult Function(int gameID, double amount) createWager,
   }) {
@@ -421,7 +432,7 @@ class _$CreateWagerImpl implements _CreateWager {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String wagerType, String team)? start,
+    TResult? Function(String wagerType, String team, String? oddsOption)? start,
     TResult? Function()? stop,
     TResult? Function(int gameID, double amount)? createWager,
   }) {
@@ -431,7 +442,7 @@ class _$CreateWagerImpl implements _CreateWager {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String wagerType, String team)? start,
+    TResult Function(String wagerType, String team, String? oddsOption)? start,
     TResult Function()? stop,
     TResult Function(int gameID, double amount)? createWager,
     required TResult orElse(),
