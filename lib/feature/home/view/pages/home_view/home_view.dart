@@ -217,10 +217,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     var betCount = LocalStorage.getInt(BETSLIPCOUNT)!;
-    var maxHeight = _focusNode.hasFocus ? 278.h : 355.h;
-    if (betCount == 0) {
-      maxHeight = maxHeight - 66;
-    }
+    var maxHeight = _focusNode.hasFocus ? 230.h : 289.h;
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
@@ -244,10 +241,30 @@ class _HomeViewState extends State<HomeView> {
                     maxHeight: maxHeight,
                     color: AppColors.darkNaviBlue,
                     controller: _panelController,
+                    onPanelOpened: () {
+                      var homePageState = context.findAncestorStateOfType<
+                          HomePageState>();
+                      if (homePageState != null) {
+                        homePageState.setState(() {
+                          homePageState.canShowFloatingButton = false;
+                        });
+                      } else {
+                        print('HomePageState not found');
+                      };
+                    },
                     onPanelClosed: () {
                       context.read<WagerBloc>().add(const WagerEvent.stop());
                       _textEditingController.clear();
                       FocusScope.of(context).unfocus();
+                      var homePageState = context.findAncestorStateOfType<
+                          HomePageState>();
+                      if (homePageState != null) {
+                        homePageState.setState(() {
+                          homePageState.canShowFloatingButton = true;
+                        });
+                      } else {
+                        print('HomePageState not found');
+                      };
                     },
                     borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(12),

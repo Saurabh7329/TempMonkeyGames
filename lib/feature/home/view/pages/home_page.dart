@@ -55,6 +55,7 @@ class HomePageState extends State<HomePage> {
   List<Promotion> list = [];
 
   int _selectedIndex = 0;
+  bool canShowFloatingButton = true;
 
   int betslipCount = 0;
 
@@ -300,9 +301,7 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget _buildBottomNavigationBar(BuildContext context) {
-    /*if (LocalStorage.getInt(BETSLIPCOUNT) != null){
-      betslipCount = LocalStorage.getInt(BETSLIPCOUNT)!;
-    }*/
+
     if (LocalStorage.getInt(BETSLIPCOUNT) != null) {
       betslipCount = LocalStorage.getInt(BETSLIPCOUNT)!;
       int index = 2;
@@ -443,7 +442,7 @@ return Scaffold(
         children: HomePage.screens,
       ),
       // key point, fab will show in Tab 0, and will hide in others.
-      floatingActionButton: _selectedIndex == 0 && this.betslipCount > 0 ?
+      floatingActionButton: canShowFloatingButton && _selectedIndex == 0 && this.betslipCount > 0 ?
       Container(
         width: 66, // Increase container width as needed
         height: 66, // Increase container height as needed
