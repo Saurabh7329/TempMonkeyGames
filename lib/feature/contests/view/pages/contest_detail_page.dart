@@ -77,6 +77,7 @@ class _ContestsDetailPageState extends State<ContestDetailPage> {
             final obj = LeaderBoardModel.fromJson(jsonList[i]);
             leaderBoard.add(obj);
           }
+          leaderBoard.sort((a, b) => (a.rank ?? 0).compareTo(b.rank ?? 0));
           setState(() {
             isLoading = false;
           });
@@ -170,7 +171,6 @@ class _ContestsDetailPageState extends State<ContestDetailPage> {
             thickness: 1,
           ),
           LeaderboardWidget(
-            leaders: widget.leaders,
             user: widget.leader,
             leaderboard: leaderBoard,
           ),

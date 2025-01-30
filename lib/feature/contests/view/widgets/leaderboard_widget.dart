@@ -7,15 +7,12 @@ import 'package:freeplay/core/domain/leader/leader.dart';
 import 'package:freeplay/feature/common/spacers/row_spacer.dart';
 
 class LeaderboardWidget extends StatelessWidget {
-  final List<Leader> leaders;
   final List<LeaderBoardModel> leaderboard;
   final Leader? user;
-  const LeaderboardWidget({super.key, required this.leaders, required this.user,required this.leaderboard});
+  const LeaderboardWidget({super.key, required this.user,required this.leaderboard});
 
   @override
   Widget build(BuildContext context) {
-    leaders.removeWhere((leader) => leader.userId == user?.userId);
-
     final bool allScoresZero = leaderboard.every(
           (leader) =>
       leader.rank == leaderboard.first.rank && leader.score == 0,
@@ -58,46 +55,6 @@ class LeaderboardWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: leaders.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text(
-                              '#${leaders[index].rank}',
-                              style: AppTextStyle.body.copyWith(
-                                color: AppColors.black,
-                              ),
-                            ),
-                            RowSpacer(allScoresZero ? 120.0 : 60.0),
-                            Text(
-                              leaders[index].username ?? 'Player',
-                              style: basycStyle.copyWith(
-                                color: AppColors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14.sp,
-                              ),
-                            ),
-                            if (!allScoresZero)
-                            const Expanded(child: SizedBox()),
-                            Text(
-                              '${leaders[index].score.toString()}',
-                              style: basycStyle.copyWith(
-                                color: AppColors.black,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14.sp,
-                              ),
-                              textAlign: TextAlign.start,
-                            )
-                          ],
-                        ),
-                      );
-                    }),
                 ListView.builder(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
