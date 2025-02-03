@@ -217,7 +217,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     var betCount = LocalStorage.getInt(BETSLIPCOUNT)!;
-    var maxHeight = _focusNode.hasFocus ? 230.h : 289.h;
+    var maxHeight = _focusNode.hasFocus ? 230.h : 310.h;
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
