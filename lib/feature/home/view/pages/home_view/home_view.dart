@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +23,7 @@ import 'package:freeplay/feature/home/bloc/wager_bloc/wager_bloc.dart';
 import 'package:freeplay/feature/home/view/local_widgets/game_card_widget.dart';
 import 'package:freeplay/feature/home/view/local_widgets/league_tab_widget.dart';
 import 'package:freeplay/feature/home/view/pages/home_page.dart';
+import 'package:freeplay/main.dart';
 import 'package:global_snack_bar/global_snack_bar.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -217,7 +220,10 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     var betCount = LocalStorage.getInt(BETSLIPCOUNT)!;
-    var maxHeight = _focusNode.hasFocus ? 230.h : 310.h;
+    var maxHeight = _focusNode.hasFocus ? 230.h : 270.h;
+    if (Platform.isIOS) {
+      maxHeight = _focusNode.hasFocus ? 230.h : 310.h;
+    }
     return MediaQuery.removePadding(
       context: context,
       removeTop: true,
@@ -561,6 +567,7 @@ class _HomeViewState extends State<HomeView> {
                                 .add(WagerEvent.onAmountChanged(value));
                           },
                           keyboardType: TextInputType.number,
+                          textInputAction: TextInputAction.done,
                           inputFormatters: [_currencyFormatter],
                           decoration: InputDecoration(
                             hintText: '0.00',

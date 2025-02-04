@@ -159,6 +159,11 @@ class _ParlayContentState extends State<_ParlayContent> {
       },
       builder: (context, state) {
         final betslib = state.parlayBetslips[0];
+        var maxHeight = _focusNode.hasFocus ? 150.h : 200.h;
+        if (Platform.isIOS) {
+          maxHeight = _focusNode.hasFocus ? 150.h : 220.h;
+        }
+
         return GestureDetector(
           onTap: () => (_panelController.isPanelOpen) ? _panelController.close() : _panelController.open(),
           child: SlidingUpPanel(
@@ -167,13 +172,17 @@ class _ParlayContentState extends State<_ParlayContent> {
             defaultPanelState: PanelState.CLOSED,
             padding: EdgeInsets.zero,
             isDraggable: true,
-            minHeight: 105.h,
-            maxHeight: _focusNode.hasFocus ? 180.h : 230.h,
+            minHeight: Platform.isIOS ? 110.h : 90.h,
+            maxHeight: maxHeight,
             color: AppColors.lightNaviBlue,
             borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(12),
               topRight: Radius.circular(12),
             ),
+            onPanelClosed: () {
+              _textEditingController.clear();
+              FocusScope.of(context).unfocus();
+            },
             body: RefreshIndicator(
               onRefresh: () async {
                 context
@@ -308,6 +317,7 @@ class _ParlayContentState extends State<_ParlayContent> {
                                     //       .add(WagerEvent.onAmountChanged(value));
                                     // },
                                     keyboardType: TextInputType.number,
+                                    textInputAction: TextInputAction.done,
                                     inputFormatters: [_currencyFormatter],
                                     decoration: InputDecoration(
                                       hintText: '🟡${betslib.amount.round()}',

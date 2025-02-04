@@ -154,8 +154,8 @@ class _StraightContentState extends State<_StraightContent> {
           controller: _panelController,
           defaultPanelState: PanelState.CLOSED,
           isDraggable: true,
-          minHeight: 105.h,
-          maxHeight: 240.h,
+          minHeight: Platform.isIOS ? 110.h : 90.h,
+          maxHeight: Platform.isIOS ? 240.h : 220.h,
           color: AppColors.lightNaviBlue,
           borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(12),
