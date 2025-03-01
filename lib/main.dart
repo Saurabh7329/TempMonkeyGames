@@ -45,6 +45,54 @@ Future<void> openBrowser(String webURl) async {
   }
 }
 
+Future<void> initializeAppsflyerSDK() async {
+  var appId = '6443625031';
+  if (Platform.isAndroid) {
+    appId = 'com.fivemonkeygames';
+  }
+
+  AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
+      afDevKey: 'CYoWPyCAHPpUoNxwMQKaz7',
+      appId: appId,
+      showDebug: true,
+      timeToWaitForATTUserAuthorization: 50, // for iOS 14.5
+      disableAdvertisingIdentifier: false, // Optional field
+      disableCollectASA: false, //Optional field
+      manualStart: true); // Optional field
+
+  AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
+
+
+  // Initialization of the AppsFlyer SDK
+  appsflyerSdk.initSdk(
+      registerConversionDataCallback: true,
+      registerOnAppOpenAttributionCallback: true,
+      registerOnDeepLinkingCallback: true
+  ).then((value) {
+    if (Platform.isAndroid) {
+      startSDK(appsflyerSdk);
+    }
+  });
+
+  if (Platform.isIOS) {
+    startSDK(appsflyerSdk);
+  }
+}
+
+void startSDK(AppsflyerSdk appsflyerSdk)  {
+// Starting the SDK with optional success and error callbacks
+  appsflyerSdk.startSDK(
+    onSuccess: () {
+      // AlertHelper.showToast("AppsFlyer SDK initialized successfully.");
+      print("AppsFlyer SDK initialized successfully.");
+    },
+    onError: (int errorCode, String errorMessage) {
+      // AlertHelper.showToast("Error initializing AppsFlyer SDK: Code $errorCode - $errorMessage");
+      print("Error initializing AppsFlyer SDK: Code $errorCode - $errorMessage");
+    },
+  );
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
@@ -53,39 +101,7 @@ void main() async {
       overlays: [SystemUiOverlay.bottom, SystemUiOverlay.top]);
   FirebaseMessaging.onBackgroundMessage(backgroundHandler);
 
-  var afDevKey = 'CYoWPyCAHPpUoNxwMQKaz7';
-  var appId = '6443625031';
-  if (Platform.isAndroid) {
-    appId = 'com.fivemonkeygames';
-  }
-
-
-
-  AppsFlyerOptions appsFlyerOptions = AppsFlyerOptions(
-    afDevKey: 'CYoWPyCAHPpUoNxwMQKaz7',
-    appId: appId,
-    showDebug: true,
-    timeToWaitForATTUserAuthorization: 50, // for iOS 14.5
-    disableAdvertisingIdentifier: false, // Optional field
-    disableCollectASA: false, //Optional field
-    manualStart: true); // Optional field
-
-  AppsflyerSdk appsflyerSdk = AppsflyerSdk(appsFlyerOptions);
-
-  appsflyerSdk.initSdk(
-      registerConversionDataCallback: true,
-      registerOnAppOpenAttributionCallback: true,
-      registerOnDeepLinkingCallback: true
-  );
-
-  appsflyerSdk.startSDK(
-    onSuccess: () {
-      log("AppsFlyer SDK initialized successfully.");
-    },
-    onError: (int errorCode, String errorMessage) {
-      log("Error initializing AppsFlyer SDK: Code $errorCode - $errorMessage");
-    },
-  );
+  initializeAppsflyerSDK();
 
   if (Platform.isAndroid) {
     var androidInfo = await DeviceInfoPlugin().androidInfo;

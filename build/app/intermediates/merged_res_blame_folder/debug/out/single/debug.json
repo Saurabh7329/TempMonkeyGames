@@ -1,0 +1,70 @@
+[
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-xhdpi_round_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-xhdpi/round_app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/drawable-hdpi_splash.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/drawable-hdpi/splash.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-xxhdpi_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-xxhdpi/app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-xxhdpi_round_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-xxhdpi/round_app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-mdpi_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-mdpi/app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/drawable-xhdpi_splash.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/drawable-xhdpi/splash.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-mdpi_round_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-mdpi/round_app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/drawable-v21_background.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/drawable-v21/background.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-hdpi_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-hdpi/app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/drawable-xxhdpi_splash.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/drawable-xxhdpi/splash.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-hdpi_round_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-hdpi/round_app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/drawable-mdpi_splash.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/drawable-mdpi/splash.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/drawable-xxxhdpi_splash.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/drawable-xxxhdpi/splash.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/drawable-v21_launch_background.xml.flat",
+        "source": "com.fivemonkeygames.app-main-44:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-xxxhdpi_round_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-xxxhdpi/round_app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-xxxhdpi_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-xxxhdpi/app_icon.png"
+    },
+    {
+        "merged": "com.fivemonkeygames.app-merged_res-50:/mipmap-xhdpi_app_icon.png.flat",
+        "source": "com.fivemonkeygames.app-main-44:/mipmap-xhdpi/app_icon.png"
+    }
+]
