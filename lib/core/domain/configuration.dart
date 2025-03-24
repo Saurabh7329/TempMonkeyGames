@@ -11,20 +11,25 @@ String configurationToJson(Configuration data) => json.encode(data.toJson());
 
 class Configuration {
   Data data;
+  bool org_restriction_flagged;
   List<Promotion> promotions;
 
   Configuration({
     required this.data,
+    required this.org_restriction_flagged,
     required this.promotions,
   });
 
   factory Configuration.fromJson(Map<String, dynamic> json) => Configuration(
-    data: Data.fromJson(json["data"]),
-    promotions: List<Promotion>.from(json["promotions"].map((x) => Promotion.fromJson(x))),
+        data: Data.fromJson(json["data"]),
+        org_restriction_flagged: json["org_restriction_flagged"] ?? true,
+        promotions: List<Promotion>.from(
+            json["promotions"].map((x) => Promotion.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "data": data.toJson(),
+    "org_restriction_flagged": org_restriction_flagged,
     "promotions": List<dynamic>.from(promotions.map((x) => x.toJson())),
   };
 }

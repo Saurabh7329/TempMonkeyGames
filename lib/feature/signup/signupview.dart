@@ -75,19 +75,6 @@ class _SignUpViewState extends State<SignUpView> {
     }
   }
 
-  void callSignUp() {
-    Map<String, String> data = {
-      "first_name": firstName.text,
-      "last_name": lastName.text,
-      "screen_name": userName.text,
-      "email": email.text,
-      "password": password.text,
-      "phone": "+919426526360",
-      "device_name": "Nokia A15"
-    };
-    context.read<SignUpBloc>().add(SignUpEvent.signup(data));
-  }
-
   Future<void> signUpAPI() async {
     print('signUpAPI url=============> ${dotenv.env['ENDPOINT']}auth/realplay');
 
@@ -120,8 +107,8 @@ class _SignUpViewState extends State<SignUpView> {
         _isLoading = false; // Show loader when the API call starts
       });
       final redirectUrl = response.headers['location'];
-      if (redirectUrl != null && await canLaunch(redirectUrl)) {
-        await launch(redirectUrl); // Launch the URL in external browser
+      if (redirectUrl != null) {
+        openBrowser(redirectUrl);
       } else {
         Fluttertoast.showToast(
           msg: "Unable to follow redirect URL",

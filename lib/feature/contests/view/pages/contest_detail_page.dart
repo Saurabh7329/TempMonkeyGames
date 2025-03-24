@@ -77,7 +77,19 @@ class _ContestsDetailPageState extends State<ContestDetailPage> {
             final obj = LeaderBoardModel.fromJson(jsonList[i]);
             leaderBoard.add(obj);
           }
-          leaderBoard.sort((a, b) => (a.rank ?? 0).compareTo(b.rank ?? 0));
+          // leaderBoard.sort((a, b) => (a.rank ?? 0).compareTo(b.rank ?? 0));
+
+          leaderBoard.sort((a, b) {
+            if ((a.rank ?? 0) == 0 && (b.rank ?? 0) == 0) {
+              return 0; // Keep existing order for both rank 0
+            } else if ((a.rank ?? 0) == 0) {
+              return 1; // Push a to the end
+            } else if ((b.rank ?? 0) == 0) {
+              return -1; // Push b to the end
+            }
+            return a.rank!.compareTo(b.rank!); // Normal ascending order
+          });
+
           setState(() {
             isLoading = false;
           });

@@ -67,7 +67,7 @@ class LeaderboardWidget extends StatelessWidget {
                           children: [
                             if (!allScoresZero)
                               Text(
-                              '#${leaderboard[index].rank}',
+                                leaderboard[index].rank == 0 ? '--' : '#${leaderboard[index].rank}',
                               style: AppTextStyle.body.copyWith(
                                 color: AppColors.purpleLightColor,
                               ),

@@ -259,9 +259,10 @@ class HomePageState extends State<HomePage> {
           bool isRealPlayEnable = false;
           LocalStorage.setConfiguration(CONFIGURATION, res);
           LocalStorage.clear(blacklist: [PROMOTION]);
+          bool org_restriction_flagged = !res.org_restriction_flagged;
           for (var element in res.promotions) {
             if (element.key == "realplay_popup_1" &&
-                element.geoFlagged == false) {
+                element.geoFlagged == false && org_restriction_flagged) {
               isRealPlayEnable = true;
                _promotion = element;
               LocalStorage.setBannerPromotion(PROMOTION, element);

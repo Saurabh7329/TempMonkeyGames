@@ -124,6 +124,7 @@ class _AffiliateViewState extends State<AffiliateView> {
                                         //redirect to sign up screen
                                         context.router.push(SignUpViewRoute());
                                       } else {
+                                        /*
                                         showRoundedDialog(context);
                                         //add 5 second delay
                                         int? timeout = int.parse(LocalStorage.getConfiguration(CONFIGURATION)!.data.style.transitionTimer);
@@ -133,8 +134,8 @@ class _AffiliateViewState extends State<AffiliateView> {
 
                                           final urlRedirect = widget.promotion[index].link;
                                           openBrowser(urlRedirect);
-                                        });
-                                        // callLogApi(index);
+                                        }); */
+                                        callLogApi(index);
                                       }
                                     },
                                     child: Container(
