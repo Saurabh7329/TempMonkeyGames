@@ -13,9 +13,9 @@
     <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
    <application
-        android:label="monkey-games"
+        android:label="Proplay"
         android:name="${applicationName}"
-        android:roundIcon="@mipmap/round_app_icon"
+        android:roundIcon="@mipmap/ic_launcher_foreground"
         android:usesCleartextTraffic="true"
         android:icon="@mipmap/app_icon">
 

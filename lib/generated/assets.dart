@@ -3,12 +3,14 @@ class Assets {
   Assets._();
 
   static const String appLogoApp = 'assets/images/app_logo/app.png';
-  static const String appLogoFreeplayLogo = 'assets/images/app_logo/freeplay_logo.png';
+  static const String appLogoProplayLogo = 'assets/images/app_logo/proplay_logo.png';
   static const String appSplashAndroid12Splash = 'assets/images/app_splash/android12_splash.png';
   static const String appSplashAndroid12splash = 'assets/images/app_splash/android12splash.png';
   static const String appSplashAppSplash = 'assets/images/app_splash/app_splash.png';
-  static const String appSplashFreeplayLogo = 'assets/images/app_splash/freeplay_logo.png';
+  static const String appSplashFreeplayLogo = 'assets/images/app_splash/proplay_logo.png';
   static const String authAuthBackground = 'assets/images/auth/auth_background.png';
+  static const String authAuthBg = 'assets/images/auth/auth_bg.png';
+  static const String authLoginBg = 'assets/images/auth/login_bg.png';
   static const String dialogImagesConnectingB = 'assets/images/dialog_images/connecting_b.png';
   static const String dialogImagesConnectionA = 'assets/images/dialog_images/connection_a.png';
   static const String dialogImagesGameModeImage = 'assets/images/dialog_images/game_mode_image.png';
@@ -20,16 +22,17 @@ class Assets {
   static const String fontsRalewayRegular = 'assets/fonts/Raleway-Regular.ttf';
   static const String fontsRalewaySemiBold = 'assets/fonts/Raleway-SemiBold.ttf';
   static const String fontsRalewayThin = 'assets/fonts/Raleway-Thin.ttf';
-  static const String freePlay = '.env';
   static const String homeAccount = 'assets/icons/home/account.svg';
   static const String homeAffiliate = 'assets/icons/home/affiliate.svg';
   static const String homeBetslip = 'assets/icons/home/betslip.svg';
   static const String homeContest = 'assets/icons/home/contest.svg';
   static const String homeHome = 'assets/icons/home/home.svg';
+  static const String homePicksBullseye = 'assets/icons/home/picks-bullseye.svg';
   static const String iconsArrowRight = 'assets/icons/arrow_right.svg';
   static const String iconsBack = 'assets/icons/back.svg';
   static const String iconsBell = 'assets/icons/bell.svg';
   static const String iconsCoin = 'assets/icons/coin.webp';
   static const String iconsDefault = 'assets/icons/default.svg';
+  static const String proplay = '.env';
 
 }

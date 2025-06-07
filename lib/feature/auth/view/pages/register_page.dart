@@ -64,7 +64,7 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
               Text(
-                'People all over the world are fond of sports and sport games.',
+                '4 People all over the world are fond of sports and sport games.',
                 textAlign: TextAlign.center,
                 style: AppTextStyle.subtitle.copyWith(
                   color: AppColors.whities,

@@ -32,7 +32,7 @@ class OnboardingWidget extends StatelessWidget {
           SizedBox(
             height: 12.h,
           ),
-          Text(subTitle ?? 'People all over the world are fond of sports and sport games. Sport makes people healthy, more organized and better disciplined.',
+          Text(subTitle ?? '1 People all over the world are fond of sports and sport games. Sport makes people healthy, more organized and better disciplined.',
               textAlign: TextAlign.center,
               style: AppTextStyle.subtitle
                   .copyWith(color: AppColors.purpleLightColor))

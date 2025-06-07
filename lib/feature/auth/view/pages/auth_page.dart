@@ -100,7 +100,7 @@ class _AuthPageState extends State<AuthPage> {
                         child: Padding(
                           padding: const EdgeInsets.only(top: 20),
                           child: Image.asset(
-                            'assets/images/app_logo/freeplay_logo.png',
+                            'assets/images/app_logo/proplay_logo.png',
                             height: 120,
                           ),
                         ),
@@ -113,7 +113,7 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'People all over the world are fond of sports and sport games.',
+                        '2 People all over the world are fond of sports and sport games.',
                         style: AppTextStyle.titleAuth,
                         textAlign: TextAlign.left,
                       ),
