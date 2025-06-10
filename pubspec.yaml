@@ -84,7 +84,7 @@ flutter_icons:
 
 flutter_native_splash:
   color: "#212340"
-  image: assets/images/app_splash/proplay_logo.png
+  image: assets/images/app_splash/app.png
 
   # Android 12 handles the splash screen differently than previous versions.  Please visit
   # https://developer.android.com/guide/topics/ui/splash-screen

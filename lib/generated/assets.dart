@@ -6,8 +6,9 @@ class Assets {
   static const String appLogoProplayLogo = 'assets/images/app_logo/proplay_logo.png';
   static const String appSplashAndroid12Splash = 'assets/images/app_splash/android12_splash.png';
   static const String appSplashAndroid12splash = 'assets/images/app_splash/android12splash.png';
+  static const String appSplashApp = 'assets/images/app_splash/app.png';
   static const String appSplashAppSplash = 'assets/images/app_splash/app_splash.png';
-  static const String appSplashFreeplayLogo = 'assets/images/app_splash/proplay_logo.png';
+  static const String appSplashFreeplayLogo = 'assets/images/app_splash/freeplay_logo.png';
   static const String authAuthBackground = 'assets/images/auth/auth_background.png';
   static const String authAuthBg = 'assets/images/auth/auth_bg.png';
   static const String authLoginBg = 'assets/images/auth/login_bg.png';

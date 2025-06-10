@@ -48,3 +48,68 @@ Thumbs.db
 *.mov
 *.wmv
 
+# --- FLUTTER SPECIFIC ---
+
+# Flutter & Dart Tools
+.dart_tool/
+.packages
+.pub-cache/
+build/
+.melos_tool/
+
+# Flutter Plugin Files
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-versions
+
+# Symbolic Links
+.symlinks/
+
+# Coverage
+coverage/
+
+# Generated Plugin Registrant
+lib/generated_plugin_registrant.dart
+
+# Android
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+android/local.properties
+android/key.properties
+android/.idea/
+*.keystore
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/.generated/
+ios/Flutter/App.framework
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+
+# Web
+web/build/
+
+# Windows
+windows/flutter/ephemeral/
+
+# macOS
+macos/Flutter/ephemeral/
+macos/Pods/
+macos/.symlinks/
+macos/Flutter/Flutter.framework
+
+# Linux
+linux/flutter/ephemeral/
+
+# Fuchsia
+.fuchsia/
+
+# VS Code
+.vscode/
+
+# Exceptions for VS Code settings you want to keep
+!.vscode/launch.json
+!.vscode/settings.json

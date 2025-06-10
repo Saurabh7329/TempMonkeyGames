@@ -15,9 +15,9 @@
    <application
         android:label="Proplay"
         android:name="${applicationName}"
-        android:roundIcon="@mipmap/ic_launcher_foreground"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:usesCleartextTraffic="true"
-        android:icon="@mipmap/app_icon">
+        android:icon="@mipmap/ic_launcher_foreground">
 
         <activity
             android:name=".MainActivity"
