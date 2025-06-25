@@ -107,7 +107,7 @@ class _AuthPageState extends State<AuthPage> {
                       ),
                       const SizedBox(height: 80),
                       Text(
-                        'Risk Free Sports Betting',
+                        'Pro Play',
                         style: AppTextStyle.titleAuthXL,
                         textAlign: TextAlign.left,
                       ),

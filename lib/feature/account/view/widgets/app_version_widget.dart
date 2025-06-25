@@ -14,7 +14,7 @@ class AppVersionWidget extends StatelessWidget {
           return snapshot.hasData
               ? Text(
               // '5 monkey games version ${snapshot.data?.version.toString().} 2024',
-              'Risk free sports betting v1.0 2024',
+              'Pro Play v1.0 2025',
                   style: AppTextStyle.superBold10
                       .copyWith(color: AppColors.purpleLightColor))
               : const Text('...');
