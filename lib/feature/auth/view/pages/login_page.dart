@@ -61,7 +61,7 @@ class LoginPage extends StatelessWidget {
                 ),
               ),
               Text(
-                '3 People all over the world are fond of sports and sport games.',
+                'People all over the world are fond of sports and sport games.',
                 textAlign: TextAlign.center,
                 style: AppTextStyle.subtitle.copyWith(
                   color: AppColors.whities,
